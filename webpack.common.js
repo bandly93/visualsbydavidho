@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path from 'path';
+const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
 
 
@@ -30,9 +30,11 @@ module.exports = {
 			{
 				test : /\.(jpg|png|gif|svg)$/,
 				use : [
-					loader : 'file-loader',
-					options : {
-						name : 'images/[name].[ext]',		
+					{
+						loader : 'file-loader',
+						options : {
+							name : 'images/[name].[ext]',		
+						},
 					},
 				],
 			},

@@ -1,6 +1,6 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-
+const webpack = require('webpack');
 //a webpack for client side development
 module.exports = merge(common,{
 	entry : {
@@ -21,7 +21,7 @@ module.exports = merge(common,{
 		}
 	},
 	plugins : [
-		new webpack.NameModulesPlugin(),
+		new webpack.NamedModulesPlugin(),
 	]
 });
 

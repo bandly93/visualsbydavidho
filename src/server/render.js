@@ -1,6 +1,6 @@
 import serialize from 'serialize-javascript';
 import { Provider } from 'react-redux';
-//note add store to handleRender
+import configureStore from '../shared/redux/store.js';
 import { renderToString } from 'react-dom/server';
 import React from 'react';
 import { StaticRouter as Router } from 'react-router';
@@ -20,7 +20,7 @@ export const handleRender = (req,res) => {
 	res.send(renderFullPage(html,preloadedState));
 }
 
-export const renderFullPage = (html,preloaded) => {
+export const renderFullPage = (html,preloadedState) => {
 	return`
 		<!doctype html>
 		<html lang = 'en'>
@@ -28,7 +28,7 @@ export const renderFullPage = (html,preloaded) => {
 				<title> visualbydavidho </title>
 				<meta name = 'viewport' content = 'width=device-width'>
 				<meta name = 'description' content = 'photography-david-ho'>
-				<link rel='icon' href='data:;base64,iVBORwOKGO='>
+				<link rel="icon" href="data:;base64,iVBORwOKGO=">
 			</head>
 			<body>
 				<div id="root">${html}</div>
