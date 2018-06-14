@@ -12,9 +12,11 @@ module.exports = merge(common,{
 		contentBase : 'dist',
 		publicPath : '/',
 		port : 8080,
+		overlay:true,
+		inline:true,
 		proxy : {
 			'**' : {
-				target : '[::1]:3000',
+				target : 'http://[::1]:3000',
 				changeOrigin : true,
 				secure : false,
 			}

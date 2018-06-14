@@ -34,7 +34,6 @@ export const renderFullPage = (html,preloadedState) => {
 				<div id="root">${html}</div>
 				<script src = '/client-bundle.js'> </script>
 				<script> window.__PRELOADED_STORE__ = ${serialize(preloadedState)} </script>
-				<link href='/client-bundle.css' rel='stylesheet'>
 			</body>
 		</html>
 	`
