@@ -6,22 +6,19 @@ import React from 'react';
 import { StaticRouter as Router } from 'react-router';
 import App from '../shared/App';
 
-export const handleRender = (req,res) => {
-	const store = configureStore();
-	let context = {};
-	const html = renderToString(
-		<Provider store = {store}>
-			<Router context = {context} location = {req.url}>
-				<App />
-			</Router>
-		</Provider>
-	);
-	const preloadedState = store.getState();
-	res.send(renderFullPage(html,preloadedState));
-}
+export const handleRender = (req, res) => {
+  const store = configureStore();
+  const context = {};
+  const html = renderToString(<Provider store={store}>
+    <Router context={context} location={req.url}>
+      <App />
+    </Router>
+  </Provider>);
+  const preloadedState = store.getState();
+  res.send(renderFullPage(html, preloadedState));
+};
 
-export const renderFullPage = (html,preloadedState) => {
-	return`
+export const renderFullPage = (html, preloadedState) => `
 		<!doctype html>
 		<html lang = 'en'>
 			<head>
@@ -36,5 +33,4 @@ export const renderFullPage = (html,preloadedState) => {
 				<script> window.__PRELOADED_STORE__ = ${serialize(preloadedState)} </script>
 			</body>
 		</html>
-	`
-}
+	`;

@@ -4,13 +4,28 @@ import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-rout
 import { connect } from 'react-redux';
 
 class NavBar extends Component{
+	
+	navbar = () => {
+		<div className = 'navbar'>
+			<div>
+				<Link to = '/'>VISUALS BY DAVID HO</Link>
+			</div>
+			<div>
+				
+			</div>
+		</div>
+	}
+	
+
+	
 	render(){
 		return<Fragment>
-			<h1>NavBar!!</h1>
+			<h1>NavBar</h1>
 		</Fragment>
 	}
 }
 
+/*
 const mapStateToProps = (state) => {
 	
 }
@@ -22,5 +37,8 @@ const mapDispatchToProps = {
 NavBar.propTypes = {	
 	
 }
+*/
 
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Navbar));
+//export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Navbar));
+
+export default NavBar;
