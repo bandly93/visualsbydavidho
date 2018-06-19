@@ -6,17 +6,12 @@ import { connect } from 'react-redux';
 class NavBar extends Component{
 	
 	navbar = () => {
-		<div className = 'navbar'>
-			<div>
-				<Link to = '/'>VISUALS BY DAVID HO</Link>
+		return <nav>
+			<div className = 'navbar'>
+				<Link to = '/'> VISUALS BY DAVID HO </Link>
 			</div>
-			<div>
-				
-			</div>
-		</div>
+		</nav>
 	}
-	
-
 	
 	render(){
 		return<Fragment>

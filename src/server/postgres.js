@@ -13,18 +13,22 @@ let client = new Client(config);
 let pool = new Pool(config);
 
 //one query most optimal
-export const clientQuery = (query) => {
+export const clientQuery = (query,req,res) => {
 	client.connect()	
-	client.query(query, (err,res) => {
-		console.log(err? err.stack : res.rows[0])
+	client.query(query, (error,data) => {
+		if(err){
+			console.error(err.stack);
+		}else{
+			res.json(data.rows[0])
+		}
 		client.end()
 	})
 }
 
 //multiple query in one request
-export const poolQuery = (query) => {
-	pool.query(query,(err,res) => {
-		console.log(err? err.stack : res.rows[0])
+export const poolQuery = (query,req,res) => {
+	pool.query(query,(err,data) => {
+		console.log(err? err.stack : data.rows[0])
 		pool.end()
 	})
 }
