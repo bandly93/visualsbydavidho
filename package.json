@@ -7,7 +7,8 @@
     "eslint": "eslint src",
     "build:dev": "webpack --config webpack.dev.js --mode development",
     "start": "webpack-dev-server --config webpack.dev.js --mode development",
-    "server": "nodemon --watch src/server --inspect src/server/server.js --exec babel-node"
+    "server": "nodemon --watch src/server --inspect src/server/server.js --exec babel-node",
+		"test":"jest"
   },
   "keywords": [],
   "author": "",
