@@ -1,17 +1,18 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
+import qs from 'qs';
 
-export function sendData(url, method, data) {
-  return fetch(url, {
-    method,
-    credentials: 'same-origin',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  })
-    .then(res => res.json())
-    .then((status) => {
-      console.log(status);
-    }).catch((err) => {
-      console.log(err);
-    });
+export const sendData = (url,method,data,actFunc) => {
+	return(dispatch) => {
+		fetch(url, {
+    	method,
+    	credentials: 'same-origin',
+    	headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
+    	body: qs.stringify(data),
+		})
+   	.then(response => response.json())
+		.then(data => actFunc?actFunc(data):console.log(data))
+		.catch(err => console.error(err));
+	}
 }
+

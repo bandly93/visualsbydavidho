@@ -1,16 +1,40 @@
-import { Client,Pool } from 'pg';
 import { DB_NAME,DB_USERNAME,DB_PASSWORD } from '../../config.json';
+import { Sequelize } from 'sequelize';
+import { photoModel } from './model.js';
 
-let config = {
-	user : DB_USERNAME,
-	database : DB_NAME,
-	password : DB_PASSWORD,
-	host : 'localhost',
-	port :'5432',
+let isProd = !true;
+
+const sequelize = new Sequelize(
+	DB_NAME,DB_USERNAME,DB_PASSWORD,{
+		host:'localhost',
+		port:5432,
+		dialect:'postgres',
+		operatorAliases:Sequelize.Op,
+		logging: isProd? true : false,	
+	}
+);
+
+sequelize.authenticate()
+	.then( async () => {
+		console.log('Successfully connected to the database');
+		let model = await photoModel(sequelize).sync({force:false})
+		model.create({name: 'hello',path :'pathtohell'})
+	})	
+	.catch((err) => {
+		console.log(err, 'Error connecting to the database!');
+})
+
+export const queryFunc = async (query,req,res) => {
+	
+	/*
+	try {
+		let data = await sequelize.query(query);
+		return data;
+	}	catch(e) {
+		console.log(e,'Error')
+	}
+	*/
 }
-
-let client = new Client(config);
-let pool = new Pool(config);
 
 //one query most optimal
 export const clientQuery = (query,req,res) => {
@@ -34,6 +58,7 @@ export const poolQuery = (query,req,res) => {
 }
 
 module.exports = {
+	queryFunc,
 	clientQuery,
 	poolQuery,
 }

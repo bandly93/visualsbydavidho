@@ -2,12 +2,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
 
-
 //A common webpack file that all other webpack share.
 module.exports = {
 	output : {
 		filename : '[name]-bundle.js',
 		path : path.resolve(__dirname,'dist'),
+		publicPath: '/',
 	},
 	module : {
 		rules : [

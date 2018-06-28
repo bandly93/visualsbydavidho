@@ -1,24 +1,18 @@
-import express from 'express';
+const express = require('express');
 const pgRouter = express.Router();
-import { clientQuery, poolQuery } from '../postgres.js';
-import { selectAllFrom, selectColFrom } from '../sqlQueries.js';
+import { queryFunc } from '../postgres.js';
+import { selectAllFrom, selectColFrom, insertInto } from '../sqlQueries.js';
 
 pgRouter.route('/')
-.post((req,res) => {
-	
+.get((req,res) => {
 })
 
-.delete((req,res) => {
+.post(async(req,res) => {
+	console.log(queryFunc());
 })
 
 .put((req,res) => {
-
-
-})
-
-.get((req,res) => {
-
-
+	console.log('hello from put');
 })
 
 module.exports = pgRouter;

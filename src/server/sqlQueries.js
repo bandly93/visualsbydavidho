@@ -8,7 +8,13 @@ export const selectAllFrom = (table) => {
 	return `SELECT * FROM ${table}`;
 }
 
+//insert data into table
+export const insertInto = (table,values) => {
+	return `INSERT INTO ${table} VALUES ${values.join(',')}`;
+}
+
 module.exports = {
 	selectColFrom,
 	selectAllFrom,
+	insertInto,
 }
