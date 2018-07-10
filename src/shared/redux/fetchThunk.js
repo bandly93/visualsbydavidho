@@ -7,8 +7,8 @@ export const sendData = (url,method,data,actFunc) => {
 		fetch(url, {
     	method,
     	credentials: 'same-origin',
-    	headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-    	body: qs.stringify(data),
+    	headers: { 'Content-Type': 'application/json'},
+    	body: JSON.stringify(data),
 		})
    	.then(response => response.json())
 		.then(data => actFunc?actFunc(data):console.log(data))

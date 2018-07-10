@@ -1,39 +1,12 @@
-import { DB_NAME,DB_USERNAME,DB_PASSWORD } from '../../config.json';
-import { Sequelize } from 'sequelize';
-import { photoModel } from './model.js';
+import { models,sequelize } from './database.js';
 
-let isProd = !true;
 
-const sequelize = new Sequelize(
-	DB_NAME,DB_USERNAME,DB_PASSWORD,{
-		host:'localhost',
-		port:5432,
-		dialect:'postgres',
-		operatorAliases:Sequelize.Op,
-		logging: isProd? true : false,	
-	}
-);
 
-sequelize.authenticate()
-	.then( async () => {
-		console.log('Successfully connected to the database');
-		let model = await photoModel(sequelize).sync({force:false})
-		model.create({name: 'hello',path :'pathtohell'})
-	})	
-	.catch((err) => {
-		console.log(err, 'Error connecting to the database!');
-})
+
+
 
 export const queryFunc = async (query,req,res) => {
-	
-	/*
-	try {
-		let data = await sequelize.query(query);
-		return data;
-	}	catch(e) {
-		console.log(e,'Error')
-	}
-	*/
+	let data = await sequelize.query(query);
 }
 
 //one query most optimal

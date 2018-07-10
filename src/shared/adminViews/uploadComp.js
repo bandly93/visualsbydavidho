@@ -3,53 +3,108 @@ import Dropzone from 'react-dropzone';
 import { sendData } from '../redux/fetchThunk.js';
 import { connect } from 'react-redux';
 import { updateView } from '../redux/viewModule.js';
+import { uploadFolder, uploadFiles } from '../redux/uploadModule.js';
+//import ImageCompressor from 'image-compressor.js';
 
 class UploadBox extends Component{
-	constructor(props){
-		super(props);
-		this.state = {
-			files : []
-		}
+	onDrop = async (acceptedFiles) => {
+		let newFiles = await photoArray(acceptedFiles)
+		this.props.uploadFiles({files:newFiles})
+	}
+
+	sendFiles = (e) => {
+		e.preventDefault();
+		const { files,folder } = this.props.upload;
+		const { uploadFiles,sendData } = this.props;
+		sendData('/postgres','POST',{files,path:folder},uploadFiles({files:null}))	
 	}
 	
-	onDrop = (files) => {
-		let newFiles = this.state.files.concat(files);
-		this.setState({files:newFiles});
-	}	
-	
-	sendFiles = async (e) => {
-		e.preventDefault();
-		await this.props.sendData('/postgres','POST',{data:this.state.files})
-		await this.setState({files:[]});	
+	onFormChange = (e) => {
+		this.props.uploadFolder({folder:e.currentTarget.value})
 	}
 
 	render(){
 		return<Fragment>
 			<div className = 'dropzone'>
-				<Dropzone onDrop = {this.onDrop}>
+				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
 					<p> Drop your files in here! </p>
 				</Dropzone>
 				<h1>Files to be uploaded</h1>
 				<ul>
 					{
-						this.state.files.map(f => <li key = {f.name}> {f.name} - {f.size} bytes</li>)
+						//this.state.files.map(f => <li key = {f.name}> {f.name} - {f.size} bytes</li>)
 					}
 				</ul>
-				<button onClick = {(e)=>this.sendFiles(e)}> Submit Files </button>
+				<form onSubmit = {this.sendFiles} >
+					<input 
+						type = 'text' 
+						name = 'folder'
+						placeholder = 'add folder' 
+						onChange = {this.onFormChange}/>
+					<input type = 'submit'/>	
+				</form>
 			</div>
 		</Fragment>
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		view : state.view
+const photoArray = (photos) => {
+	let arr = [];
+	for (let i = 0; i < photos.length; i++){
+		let reader = new FileReader();
+		reader.onload = function(event){
+			arr.push({name:photos[i].name,data:event.target.result});
+		}
+		reader.readAsDataURL(photos[i]);
 	}
+	return arr;
 }
+
+const mapStateToProps = (state) => ({
+	view : state.view,
+	upload : state.upload,
+})
 
 const mapDispatchToProps = {
 	sendData,
 	updateView,
+	uploadFolder,
+	uploadFiles,
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(UploadBox);
+
+/*
+const photoArrayForm = (photos) => {
+	let form = new FormData();	
+	photos.map( photo => form.append(photo.name,photo));
+	return form;	
+}
+
+
+
+const constructPhotoArray = (photos) => {
+	let photoArray = [];
+	for (let i = 0; i < photos.length; i++){
+		let reader = new FileReader();
+		let transformedPhoto = new ImageCompressor(photos[i],{
+			quality:.5,
+			maxWidth:3600,
+			maxHeight:2250,
+			minWidth:1600,
+			minHeight:900,
+			success(result){
+				reader.onload = function(event){
+					photoArray.push({name:photos[i].name,data:event.target.result});
+				}
+				reader.readAsDataURL(result);
+			},
+			error(e){
+				console.log(e.message);
+			}
+		})
+	}
+	return photoArray;
+}
+
+*/
