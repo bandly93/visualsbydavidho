@@ -23,11 +23,9 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: [
-					// devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-					// 'css-loader',
+				use: [	
 					MiniCssExtractPlugin.loader,
-					'css-loader',
+					{ loader : 'css-loader', options : {sourceMap:true}}
 				],
 			},
 			{
@@ -47,7 +45,7 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			// filename: devMode ? '[name].css' : '[name].[hash].css',
 			// chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-			filename: 'styles.css',
+			filename: "styles.css",
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin()

@@ -28,13 +28,7 @@ class UploadBox extends Component{
 			<div className = 'dropzone'>
 				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
 					<p> Drop your files in here! </p>
-				</Dropzone>
-				<h1>Files to be uploaded</h1>
-				<ul>
-					{
-						//this.state.files.map(f => <li key = {f.name}> {f.name} - {f.size} bytes</li>)
-					}
-				</ul>
+				</Dropzone>	
 				<form onSubmit = {this.sendFiles} >
 					<input 
 						type = 'text' 
@@ -72,7 +66,9 @@ const mapDispatchToProps = {
 	uploadFiles,
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(UploadBox);
+export default {
+	component:connect(mapStateToProps,mapDispatchToProps)(UploadBox)
+}
 
 /*
 const photoArrayForm = (photos) => {

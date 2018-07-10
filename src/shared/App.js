@@ -7,7 +7,6 @@ const App = ({ route }) => {
 	return(
 		<div>
 			<NavBar />
-
 			<div>
 				{renderRoutes(route.routes)}
 			</div>

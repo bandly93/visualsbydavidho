@@ -1,7 +1,7 @@
 import React from 'react';
 import App from '../App.js';
 import FrontPage from '../pages/FrontPage.js';
-import UploadPic from '../pages/UploadPic.js';
+import Upload from '../adminViews/UploadComp.js';
 
 export default [
     {
@@ -13,7 +13,7 @@ export default [
                 exact: true
             },
             {
-                ...UploadPic,
+                ...Upload,
                 path: '/admin',
                 exact: true
             }
