@@ -1,54 +1,20 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { renderRoutes } from 'react-router-config';
 import NavBar from './components/NavBar';
-import Upload from './adminViews/UploadComp';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import './css/Navbar.css';
 
-/* uncomment	for google analytics */
-// import ga from 'react-ga';
-// import {GA_CODE} from '../../config.json';
+const App = ({ route }) => {
+	return(
+		<div>
+			<NavBar />
 
-class App extends Component {
-  /*
-	componentDidMount(){
-		ga.initialize(GA_CODE,{debug:false});
-		ga.pageview(this.props.location.pathname);
-	}
-	componentWillUpdate(nextProps){
-		if(nextProps.location.pathname !== this.props.location.pathname){
-			ga.pageview(nextProps.location.pathname);
-		}
-	}
-	*/
-  render() {
-    return<div>
-			<Upload />
-      <h1> Welcome to Visuals by David Ho! </h1>
-    </div>
-  }
+			<div>
+				{renderRoutes(route.routes)}
+			</div>
+		</div>
+	)   
 }
 
-const mapStateToProps = (state) => {
-	return {
-		view:state.view
-	}
+export default {
+	component: App
 }
-
-const mapDispatchToProps = {
-	
-
-}
-
-
-
-
-
-
-App.propTypes = {
-	
-
-
-}
-
-export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));
