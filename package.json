@@ -5,8 +5,8 @@
   "main": "./src/server/server.js",
   "scripts": {
     "eslint": "eslint src",
-    "build:dev": "webpack --config webpack.dev.js --mode development",
-    "build": " webpack --config webpack.server.js --mode production",
+    "build:dev": "webpack --config webpack.dev.js --mode development --hot",
+    "build": " webpack --config webpack.server.js --mode production --hot",
     "start": "webpack-dev-server --config webpack.dev.js --mode development",
     "server": "nodemon --watch src/server --inspect src/server/server.js --exec babel-node",
     "test": "jest"
@@ -33,7 +33,6 @@
     "image-compressor": "^1.2.0",
     "image-compressor.js": "^1.1.4",
     "isomorphic-fetch": "^2.2.1",
-    "mini-css-extract-plugin": "^0.4.0",
     "path": "^0.12.7",
     "pg": "^7.4.3",
     "qs": "^6.5.2",
@@ -43,6 +42,7 @@
     "react-ga": "^2.5.3",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
+    "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
@@ -56,13 +56,16 @@
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
+    "css-loader": "^1.0.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "jest": "^23.1.0",
+    "mini-css-extract-plugin": "^0.4.0",
     "morgan": "^1.9.0",
+    "postcss-loader": "^2.1.5",
     "prop-types": "^15.6.1"
   }
 }

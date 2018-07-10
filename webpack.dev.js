@@ -11,6 +11,7 @@ module.exports = merge(common,{
 	devServer : {
 		contentBase : 'dist',
 		publicPath : '/',
+		hot: true,
 		port : 8080,
 		overlay:true,
 		inline:true,

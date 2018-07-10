@@ -2,38 +2,26 @@ import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import '../css/Navbar.css';
 
 class NavBar extends Component{
-	
-	navbar = () => {
-		return <nav>
-			<div className = 'navbar'>
-				<Link to = '/'> VISUALS BY DAVID HO </Link>
+	render() {
+		return (
+			<div>
+				<h1 className="navLeft">
+					VISUALS BY DAVID HO
+				</h1>
+
+				<div className="navRight">
+					<ul>
+						<li>+ Portfolio</li>
+						<li>+ About Me & Links</li>
+						<li>+ Instagram</li>
+						<li>+ Contact Me</li>
+					</ul>
+				</div>
 			</div>
-		</nav>
-	}
-	
-	render(){
-		return<Fragment>
-			<h1>NavBar</h1>
-		</Fragment>
+		)
 	}
 }
-
-/*
-const mapStateToProps = (state) => {
-	
-}
-
-const mapDispatchToProps = {
-	
-}
-
-NavBar.propTypes = {	
-	
-}
-*/
-
-//export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Navbar));
-
-export default NavBar;
+export default NavBar
