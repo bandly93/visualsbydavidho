@@ -47,7 +47,7 @@ class NavBar extends Component{
 						<div className="dropdown">
 							<li className="dropbtn">+ About Me & Links</li>
 								<div className="dropdown-content">
-									<a>hi</a>
+									<a>Bye</a>
 								</div>
 						</div>
 						<li>+ Instagram</li>
