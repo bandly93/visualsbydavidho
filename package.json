@@ -8,7 +8,7 @@
     "build:dev": "webpack --config webpack.dev.js --mode development --hot",
     "build": " webpack --config webpack.server.js --mode production --hot",
     "start": "webpack-dev-server --config webpack.dev.js --mode development",
-    "server": "nodemon --watch src/server --inspect src/server/server.js --exec babel-node",
+    "server": "nodemon --watch src/server --inspect /dist --exec babel-node",
     "test": "jest"
   },
   "keywords": [],
