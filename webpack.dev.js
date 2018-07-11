@@ -4,7 +4,7 @@ const webpack = require('webpack');
 //a webpack for client side development
 module.exports = merge(common,{
 	entry : {
-		client : ['babel-polyfill','./src/client/index.js'],
+		client : ['babel-polyfill','./src/client/index.js','./src/shared/css/styles.css'],
 	},
 	mode : 'development',
 	devtool : 'inline-source-map',

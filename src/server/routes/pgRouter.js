@@ -11,10 +11,11 @@ pgRouter.route('/')
 
 .post((req,res) => {
 	const {files,path} = req.body;	
-	if(!checkPathExist(path)){
-		writeFolderAndModel(path)
+	if(checkPathExist(path)){
+		convertBase64ToImg(files,path);
+	}else{
+		writeFolderAndModel(files,path)
 	}
-	convertBase64ToImg(files,path);
 })
 
 
@@ -24,13 +25,18 @@ const checkPathExist = path => {
 	return fs.existsSync(relPath+'/'+path) && sequelize.models[path];
 }
 
-const writeFolderAndModel = (path) => {
+const writeFolderAndModel = (files,path) => {
 	fs.mkdir(relPath+'/'+path,(err)=>{
 		if(err){
 			console.log(err);
 		}else{
+			console.log(`The folder ${path} has been created`);
 			let model = createModel(path)
-			model.sync()		
+			model.sync().then(model=> {
+				convertBase64ToImg(files,path)				
+			}).catch(err => {
+				console.log(err);
+			})
 		}
 	})
 }	
@@ -45,11 +51,10 @@ const convertBase64ToImg = (files,path) => {
 		fs.writeFile(newPath,buf,(error) => {
 			console.log('------------------------------------------');
 			if(error){
-				console.error('Error from adding photos',error)
+				console.error('Error from adding photos')
 			}else{
 				console.log('Successfully added '+file.name)
 				console.log(`The model ${path} does exist.`);
-				console.log('Attemping to save path to database');
 				savePathToDB(sequelize.models[path],file.name,path,i);	
 				console.log('------------------------------------------');
 			}
@@ -58,10 +63,10 @@ const convertBase64ToImg = (files,path) => {
 }
 
 const savePathToDB = (model,name,path,i) => {
-	console.log(sequelize.models[path],i,'testing from here');
+	console.log('Attemping to save path to database');
 	sequelize.models[path].create({name,path})
 	.then(()=> {
-		console.log('Successfully saved item to database');
+		console.log('Successfully saved '+name+' to database');
 	})
 	.catch((err) => {
 		console.error('Error saving path to db function savePathToDB',err)

@@ -5,7 +5,7 @@ const merge = require('webpack-merge');
 //a webpack for server development
 module.exports = merge(common,{
 	entry : {
-		server : ['./src/server/server.js', './src/shared/css/Navbar.css'],
+		server : ['./src/server/server.js', './src/shared/css/styles.css'],
 	},
 	target : 'node',
 	externals : [nodeExternals()],
