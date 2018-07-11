@@ -2,7 +2,6 @@ import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import '../css/Navbar.css';
 
 class NavBar extends Component{
 	render() {

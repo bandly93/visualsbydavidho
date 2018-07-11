@@ -24,7 +24,7 @@ class UploadBox extends Component{
 	}
 
 	render(){
-		return<Fragment>
+		return<div className = 'upload'>
 			<div className = 'dropzone'>
 				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
 					<p> Drop your files in here! </p>
@@ -38,7 +38,7 @@ class UploadBox extends Component{
 					<input type = 'submit'/>	
 				</form>
 			</div>
-		</Fragment>
+		</div>
 	}
 }
 

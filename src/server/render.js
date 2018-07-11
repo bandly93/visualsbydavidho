@@ -31,11 +31,11 @@ export const renderFullPage = (html, preloadedState) =>  `
 				<meta name = 'viewport' content = 'width=device-width'>
 				<meta name = 'description' content = 'photography-david-ho'>
 				<link rel="icon" href="data:;base64,iVBORwOKGO=">
-				<link rel="stylesheet "href="/styles.css" >
 			</head>
 			<body>
 				<div id="root">${html}</div>
 				<script src = '/client-bundle.js'> </script>
+				<link href = '/client-styles.css' rel = 'stylesheet'>
 				<script> window.__PRELOADED_STORE__ = ${serialize(preloadedState)} </script>
 			</body>
 		</html>

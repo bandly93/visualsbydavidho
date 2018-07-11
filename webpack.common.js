@@ -45,7 +45,7 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			// filename: devMode ? '[name].css' : '[name].[hash].css',
 			// chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-			filename: "styles.css",
+			filename: "[name]-styles.css",
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin()
