@@ -1,0 +1,12 @@
+.navLeft {
+    float: left;
+}
+
+body {
+    color: green
+}
+
+.upload {
+	display:flex;
+	justify-content:center;
+}
