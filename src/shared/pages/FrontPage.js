@@ -4,7 +4,7 @@ class FrontPage extends Component {
     render() {
         return(
             <div>
-                Welcome to the front page
+                {/* Welcome to the front page */}
             </div>
         )
     }

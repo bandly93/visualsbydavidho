@@ -1,7 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
-const devMode = process.env.NODE_ENV !== 'production';
 
 //A common webpack file that all other webpack share.
 module.exports = {
@@ -22,11 +21,11 @@ module.exports = {
 				],	
 			},
 			{
-				test: /\.css$/,
-				use: [	
+				test: /\.css$/, 
+				use: [
 					MiniCssExtractPlugin.loader,
-					{ loader : 'css-loader', options : {sourceMap:true}}
-				],
+					'css-loader',
+					] 
 			},
 			{
 				test: /\.(jpg|png|gif|svg)$/,
@@ -43,11 +42,13 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			// filename: devMode ? '[name].css' : '[name].[hash].css',
-			// chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
 			filename: "styles.css",
 		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin()
 	],
+	stats: {
+		entrypoints: true,
+		children: true
+	}
 }

@@ -1,7 +1,60 @@
-.navLeft {
-    float: left;
+body {
+    font-family: PT sans;
 }
 
-body {
-    color: green
+a {
+    text-decoration: none;
+    color: black;
 }
+
+li {
+    font-size: 15px;
+    display: inline-block;
+    margin-left: 1.7vw;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.navLeft {
+    float: left;
+    text-decoration: none;
+    margin-top: auto;
+    letter-spacing: 0.289474em;
+    font-weight: 700;
+    font-size: 38px;
+    margin-left: 1vw;
+    margin-top: -1vw;
+}
+
+.navRight {
+    width: 35%;
+    margin-left: 64vw;
+    margin-top: 3vh;
+}
+
+/* Dropdown stuff */
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    overflow: auto;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {display: block;}

@@ -14,7 +14,7 @@ export const handleRender = (req, res) => {
   const html = renderToString(
 		<Provider store={store}>
     		<Router context={context} location={req.url}>
-      		{renderRoutes(Routes)}
+      			{renderRoutes(Routes)}
     		</Router>
 		</Provider>
 		);
@@ -23,7 +23,8 @@ export const handleRender = (req, res) => {
   	res.send(renderFullPage(html, preloadedState));
 };
 
-export const renderFullPage = (html, preloadedState) =>  `
+export const renderFullPage = (html, preloadedState) =>  {
+	return `
 		<!doctype html>
 		<html lang = 'en'>
 			<head>
@@ -32,6 +33,7 @@ export const renderFullPage = (html, preloadedState) =>  `
 				<meta name = 'description' content = 'photography-david-ho'>
 				<link rel="icon" href="data:;base64,iVBORwOKGO=">
 				<link rel="stylesheet "href="/styles.css" >
+				<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
 			</head>
 			<body>
 				<div id="root">${html}</div>
@@ -39,4 +41,5 @@ export const renderFullPage = (html, preloadedState) =>  `
 				<script> window.__PRELOADED_STORE__ = ${serialize(preloadedState)} </script>
 			</body>
 		</html>
-	`;
+	`
+};
