@@ -17,6 +17,10 @@ li:hover {
     cursor: pointer;
 }
 
+a:hover {
+    cursor: pointer;
+}
+
 .navLeft {
     float: left;
     text-decoration: none;
@@ -37,24 +41,68 @@ li:hover {
 /* Dropdown stuff */
 
 .dropdown {
+    text-align: center;
     position: relative;
     display: inline-block;
+    width: auto;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    overflow: auto;
+    padding-top: 18px;
+    left: 50%;
+    right: auto;
+    /* margin-left: -100px; */
+    z-index: 1100px;
+    transform: translateX(-50%);
+}
+
+.dropdown-child {
+    padding: 15px 20px;
+    margin: 0;
+    background: black;
+    position: relative;
+    display: inline-block;
 }
 
 .dropdown-content a {
-    color: black;
+    color: white;
     text-decoration: none;
+    text-transform: none;
+    text-align: left;
     display: block;
+    clear: both;
+    font-size: 12.75px;
+    line-height: 1.5em;
+    letter-spacing: 1px;
 }
 
-.dropdown-content a:hover {
-    background-color: #ddd;
+/* .dropdown-child span {
+    border-bottom: 1px solid transparent;
 }
+
+.dropdown-child active {
+    border-color: white;
+} */
 
 .dropdown:hover .dropdown-content {display: block;}
+
+.dropdown-content .dropdown-child {display: inline-block;}
+
+/* The nipple of the dropdown menus */
+
+.dropdown .dropdown-content ul.dropdown-child:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0 0 10px;
+    border-style: solid;
+    border-right: solid 10px transparent;
+    border-left: solid 10px transparent;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    margin-left: -10px;
+}
