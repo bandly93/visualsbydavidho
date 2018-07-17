@@ -2,9 +2,8 @@ body {
     font-family: PT sans;
 }
 
-a {
-    text-decoration: none;
-    color: black;
+ul {
+    list-style-type: none;
 }
 
 li {
@@ -17,8 +16,11 @@ li:hover {
     cursor: pointer;
 }
 
-a:hover {
-    cursor: pointer;
+a {
+    text-decoration: none;
+    color: #000;
+    position: none;
+    padding: 5px 0;
 }
 
 .navLeft {
@@ -78,19 +80,33 @@ a:hover {
     letter-spacing: 1px;
 }
 
-/* .dropdown-child span {
-    border-bottom: 1px solid transparent;
-}
-
-.dropdown-child active {
-    border-color: white;
-} */
-
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown-content .dropdown-child {display: inline-block;}
 
-/* The nipple of the dropdown menus */
+/* Underline when hovering word */
+
+.dropdown .dropdown-child a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown .dropdown-child a:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.dropdown .dropdown-child a span {
+    border-bottom: 0.05em solid transparent;
+}
+
+.dropdown .dropdown-child a span:hover {
+    -webkit-transition: border-bottom 0.3s;
+    border-bottom: 0.05em solid white;
+}
+
+/* The triangle of the dropdown menus */
 
 .dropdown .dropdown-content ul.dropdown-child:before {
     content: '';

@@ -33,7 +33,7 @@ const aboutMap = about.map((abouts, i) => {
         )
     } else {
         return (
-            <a href={abouts.external} key={i}>{abouts.name}</a>
+            <a href={abouts.external} key={i}><span>{abouts.name}</span></a>
         )
     }
 })
@@ -46,7 +46,7 @@ const instagram = [
 
 const instagramMap = instagram.map((instagrams, i) => {
     return (
-        <a href={instagrams.external} key={i}>{instagrams.name}</a>
+        <a href={instagrams.external} key={i}><span>{instagrams.name}</span></a>
     )
 })
 
