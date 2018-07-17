@@ -7,7 +7,7 @@
     "eslint": "eslint src",
     "build": " webpack --config webpack.server.js --mode production --hot && webpack --config webpack.dev.js --mode development --hot",
     "start": "webpack-dev-server --config webpack.dev.js --mode development",
-    "server": "nodemon --watch /dist/server-bundle.js --exec node dist/server-bundle.js",
+    "server": "nodemon --watch dist/server-bundle.js --exec node dist/server-bundle.js",
     "test": "jest"
   },
   "keywords": [],
