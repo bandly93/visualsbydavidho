@@ -6,12 +6,10 @@ import styles from "../css/Navbar.css";
 const navbarData = require('../data/navbarData.js');
 
 class NavBar extends Component{
-
 	render() {
 		const { navbarLabelMap } = navbarData;
-
 		return (
-			<div>
+			<div className="navbar">
 				<h1 className="navLeft">
 					<b><Link to="/">VISUALS BY DAVID HO</Link></b>
 				</h1>

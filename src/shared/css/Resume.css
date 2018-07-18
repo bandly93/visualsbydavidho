@@ -1,0 +1,14 @@
+.resume .content {
+    text-align: center;
+}
+
+.resume {
+    width: 60%;
+    margin: auto;
+    margin-top: 2vh;
+    padding-top: 2vh;
+}
+
+.resume p {
+    letter-spacing: 0.5px;
+}
