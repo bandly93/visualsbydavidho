@@ -4,7 +4,7 @@ import NavBar from './components/NavBar';
 
 const App = ({ route }) => {
 	return(
-		<div>
+		<div className="app">
 			<NavBar />
 			<div>
 				{renderRoutes(route.routes)}

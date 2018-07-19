@@ -1,5 +1,13 @@
 body {
     font-family: PT sans;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    position: absolute;
+    padding-top: -25vh;
+    z-index: 100; 
 }
 
 ul {
@@ -26,12 +34,12 @@ a {
 .navLeft {
     float: left;
     text-decoration: none;
-    margin-top: auto;
+    margin-top: 2vh;
     letter-spacing: 0.289474em;
     font-weight: 700;
     font-size: 38px;
-    margin-left: 1vw;
-    margin-top: -1vw;
+    margin-left: 2vw;
+    /* margin-top: -1vw; */
 }
 
 .navRight {

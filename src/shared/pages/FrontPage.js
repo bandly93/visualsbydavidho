@@ -6,7 +6,6 @@ class FrontPage extends Component {
         return(
             <div>
                 <Carousel />
-               Hi  
             </div>
         )
     }
