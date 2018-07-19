@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../../css/Resume.css';
+import FrontPage from '../FrontPage.js';
 
 class Resume extends Component {
     render() {

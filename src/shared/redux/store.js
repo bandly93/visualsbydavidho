@@ -2,10 +2,12 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import view from './viewModule.js';
 import upload from './uploadModule.js';
+import imageCarousel from './reducers/imageCarouselReducer.js';
 
 const reducers = combineReducers({
   view,
-	upload
+  upload,
+  imageCarousel
 });
 
 export default function configureStore(preloadedState) {

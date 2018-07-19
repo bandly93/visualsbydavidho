@@ -26,7 +26,6 @@ const about = [
 ]
 
 const aboutMap = about.map((abouts, i) => {
-    console.log(abouts.external)
     if (abouts.external == null) {
         return (
             <Link to={abouts.link} key={i}><span>{abouts.name}</span></Link>

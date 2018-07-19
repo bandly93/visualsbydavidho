@@ -9,3 +9,7 @@ class Nvidia extends Component {
         )
     }
 }
+
+export default {
+    component: Nvidia
+}
