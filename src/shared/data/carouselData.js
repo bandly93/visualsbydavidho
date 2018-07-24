@@ -4,7 +4,6 @@ import Car_one from '../assets/pictures/cars_one.jpg';
 
 export const imgUrl = [
     Nvidia_one,
-    "https://lh3.googleusercontent.com/oxPeODS2m6rYIVbhcQChRtOWEYeGDwbeeeB1cDU2o_WYAVPU61VIgx-_6BAh5gSL8Sw=h900",
     Car_one
 ];
 

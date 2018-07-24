@@ -1,30 +1,49 @@
 .carousel {
-    background-size: 'cover';
-    background-position: 'center';
-    background-repeat: 'no-repeat';
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
+    overflow: hidden;
+    /* transition: all 0.1s ease-out; */
 }
 
+
+/* Bottom left text */
 .carouselText {
-    bottom: 3vh;
-    left: 1vw;
+    border-radius: 0 30px 0 30px;
+    letter-spacing: 0.5em;
+    padding: 12px 20px;
+    line-height: 1.2em;
+    font-size: 15px;
+    bottom: 0.1vh;
+    height: 1.5vh;
     position: fixed;
-    
+    background: white;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.rightButtonBox {
+    float: right;
 }
 
 .carouselButtonRight {
-    float: right;
-    width: 50vw;
-    height: 50%;
-    border: 4px solid blue;
-    margin-top: -38%;
-    
+    width: 3vw;
+    margin-top: -25em;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent; 
+    border-left:20px solid blue; 
+}
+
+.leftButtonBox {
+    float: left;
 }
 
 .carouselButtonLeft {
-    width: 50vw;
-    height: 50%;
-    border: 4px solid red;
-    margin-top: -38%;
+    width: 3vw;
+    margin-top: -25em;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent; 
+    border-right: 20px solid red;   
 }
