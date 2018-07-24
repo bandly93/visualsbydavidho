@@ -1,5 +1,5 @@
 const initialState = {
-    currentImageIndex: 1
+    currentImageIndex: 0
 }
 
 function imageCarousel(state = initialState, action) {

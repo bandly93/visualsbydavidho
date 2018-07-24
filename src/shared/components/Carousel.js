@@ -12,26 +12,26 @@ class Carousel extends Component {
     previousSlide = () => {
         const currentImageIndex = this.props.imageCarouselData.currentImageIndex
         const newIndex = currentImageIndex - 1
-
-        console.log(currentImageIndex)
-        if (currentImageIndex < 0) {
-            let newIndex = imgUrl.length;
-            console.log(newIndex, "newIndex")
-            this.props.previousSlide(newIndex)
-        } else {
-            this.props.previousSlide(newIndex)
-        }
+        console.log(newIndex)
         
-        // console.log(newIndex, "byee");
+        if (newIndex < 0) {
+            let newIndex = imgUrl.length - 1
+            this.props.nextSlide(newIndex)
+        } else {
+            this.props.nextSlide(newIndex)
+        }
     }
 
     nextSlide = () => {
         const currentImageIndex = this.props.imageCarouselData.currentImageIndex
         const newIndex = currentImageIndex +  1
-        if (currentImageIndex > imgUrl.length) {
-            newIndex == 0;
+
+        if (newIndex > imgUrl.length - 1) {
+            let newIndex = 0;
+            this.props.nextSlide(newIndex)
+        } else {
+            this.props.nextSlide(newIndex)
         }
-        this.props.nextSlide(newIndex)
     }
 
     render() {
