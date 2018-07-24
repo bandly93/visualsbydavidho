@@ -1,4 +1,30 @@
-body {
-    margin: 0;
-    padding: 0;
+.carousel {
+    background-size: 'cover';
+    background-position: 'center';
+    background-repeat: 'no-repeat';
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.carouselText {
+    bottom: 3vh;
+    left: 1vw;
+    position: fixed;
+    
+}
+
+.carouselButtonRight {
+    float: right;
+    width: 50vw;
+    height: 50%;
+    border: 4px solid blue;
+    margin-top: -38%;
+    
+}
+
+.carouselButtonLeft {
+    width: 50vw;
+    height: 50%;
+    border: 4px solid red;
+    margin-top: -38%;
 }
