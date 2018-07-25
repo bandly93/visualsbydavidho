@@ -5,7 +5,6 @@
     min-height: 100vh;
     min-width: 100vw;
     overflow: hidden;
-    /* transition: all 0.1s ease-out; */
 }
 
 
@@ -24,10 +23,11 @@
     text-transform: uppercase;
 }
 
+/* Buttons on carousel page */
 .rightButtonBox {
     float: right;
     cursor: pointer;
-    -webkit-animation: buttonflash 2s;
+    -webkit-animation: buttonflash 1.5s;
     opacity: 0;
 }
 
@@ -40,7 +40,7 @@
 .leftButtonBox {
     float: left;
     cursor: pointer;
-    -webkit-animation: buttonflash 2s;
+    -webkit-animation: buttonflash 1.5s;
     opacity: 0;
 }
 
@@ -51,19 +51,18 @@
 }
 
 .carouselButtonRight {
-    width: 3vw;
-    margin-top: -25em;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent; 
-    border-left:15px solid white; 
+    width: 10vw;
+    margin-top: -10em;
+    color: white;
+    font-size: 40px;
 }
 
 .carouselButtonLeft {
-    width: 3vw;
-    margin-top: -25em;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent; 
-    border-right: 15px solid white;
+    text-align: right;
+    width: 10vw;
+    margin-top: -10em;
+    color: white;
+    font-size: 40px;
 }
 
 
