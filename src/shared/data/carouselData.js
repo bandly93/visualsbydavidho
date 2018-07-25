@@ -5,7 +5,6 @@ import Car_one from '../assets/pictures/cars_one.jpg';
 export const imgUrl = [
     Nvidia_one,
     Car_one,
-    "he"
 ];
 
 export const imgText = [
