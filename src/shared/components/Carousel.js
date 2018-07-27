@@ -16,7 +16,7 @@ class Carousel extends Component {
         const newIndex = currentImageIndex - 1
         
         if (newIndex < 0) {
-            let newIndex = this.props.pictures.length - 1
+            let newIndex = this.props.backgroundImage.length - 1
             this.props.nextSlide(newIndex)
         } else {
             this.props.nextSlide(newIndex)

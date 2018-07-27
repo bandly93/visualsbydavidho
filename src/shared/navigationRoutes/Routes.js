@@ -21,15 +21,14 @@ export default [
                 exact: true
             },
             {
-                ...Nvidia,
-                path: '/nvidia',
-                exact: true
-            },
-            {
                 ...Resume,
                 path: '/resume',
                 exact: true
-            }
+            },
+            {
+                ...Nvidia,
+                path: '/nvidia',
+            },
         ]
     }
 ]

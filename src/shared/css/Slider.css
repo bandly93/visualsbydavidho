@@ -1,0 +1,25 @@
+.slider {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.subSlider {
+    display: flex;
+    padding: auto;
+}
+
+.images {
+  margin-top: 1.9em;
+  text-align: center;
+  padding-left: 20px;
+  font-size: 3.3em;
+ 
+  height: 10em;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
