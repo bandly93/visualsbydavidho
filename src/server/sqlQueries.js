@@ -5,7 +5,7 @@ export const selectColFrom = (col,table) => {
 
 // select all from table
 export const selectAllFrom = (table) => {
-	return `SELECT * FROM ${table}`;
+	return `SELECT * FROM "${table}"`;
 }
 
 //insert data into table

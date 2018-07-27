@@ -1,0 +1,15 @@
+.gallery{
+	border: 2px solid black;
+	height:80vh;
+	color:red;
+}
+
+.photos{
+	display:inline-flex;
+}
+
+.photos img{
+	flex: 5;
+}
+
+

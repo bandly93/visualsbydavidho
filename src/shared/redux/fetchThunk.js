@@ -1,6 +1,5 @@
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
-import qs from 'qs';
 
 export const sendData = (url,method,data,actFunc) => {
 	return(dispatch) => {
@@ -10,8 +9,27 @@ export const sendData = (url,method,data,actFunc) => {
     	headers: { 'Content-Type': 'application/json'},
     	body: JSON.stringify(data),
 		})
-   	.then(response => response.json())
-		.then(data => actFunc?actFunc(data):console.log(data))
+   	.then(res => res.json())
+		.then(data =>{ 
+			if(actFunc){
+				actFunc(data)
+				//console.log(data)
+			}
+		})
+		.catch(err => console.error(err));
+	}
+}
+
+export const getData = (url,actFunc) => {
+	return(dispatch) => {
+		fetch(url,{credentials: 'same-origin'})
+		.then(res => res.json())
+		.then(data => {
+			if(actFunc){
+				//console.log(data);
+				actFunc(data)
+			}
+		})
 		.catch(err => console.error(err));
 	}
 }

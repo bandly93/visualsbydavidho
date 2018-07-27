@@ -4,7 +4,7 @@ import { sendData } from '../redux/fetchThunk.js';
 import { connect } from 'react-redux';
 import { updateView } from '../redux/viewModule.js';
 import { uploadFolder, uploadFiles } from '../redux/uploadModule.js';
-import '../css/Upload.css'
+import '../css/Upload.css';
 
 class UploadBox extends Component{
 
@@ -16,7 +16,12 @@ class UploadBox extends Component{
 		e.preventDefault();
 		const { files,folder } = this.props.upload;
 		const { uploadFiles,sendData } = this.props;
-		sendData('/postgres','POST',{files,path:folder},uploadFiles({folder:'',files:null}))	
+		if(folder !== '' && files){
+			sendData('/postgres','POST',{files,path:folder},uploadFiles({folder:'',files:null}))	
+		}else{
+			//create redux action to show error
+			console.log('please fill out the form');
+		}
 	}
 	
 	onFormChange = (e) => {

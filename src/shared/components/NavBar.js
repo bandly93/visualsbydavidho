@@ -2,7 +2,7 @@ import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styles from "../css/Navbar.css";
+import {navLeft,navRight} from "../css/Navbar.css";
 const navbarData = require ('../data/navbarData.js');
 
 class NavBar extends Component{
@@ -12,11 +12,11 @@ class NavBar extends Component{
 
 		return (
 			<div>
-				<h1 className="navLeft">
+				<h1 className='navLeft'>
 					<b><Link to="/">VISUALS BY DAVID HO</Link></b>
 				</h1>
 
-				<div className="navRight">
+				<div className='navRight'>
 					<ul>
 						{navbarLabelMap}
 						

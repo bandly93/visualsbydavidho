@@ -5,8 +5,8 @@ const merge = require('webpack-merge');
 //a webpack for server development
 module.exports = merge(common,{
 	entry : {
-		server : ['babel-polyfill', './src/server/server.js'],
-	},
+		server : ['./src/server/server.js'],
+	},	
 	target : 'node',
-	externals : [nodeExternals()],
+	externals : [nodeExternals()],	
 });

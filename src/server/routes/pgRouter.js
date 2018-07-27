@@ -6,15 +6,27 @@ import { selectAllFrom, selectColFrom, insertInto } from '../sqlQueries.js';
 import { sequelize,models,createModel } from '../database.js';
 
 pgRouter.route('/')
-.get((req,res) => {
+.get((req,res) => {		
+	let folders = Object.keys(sequelize.models);	
+	res.json({allFolders:folders});
 })
 
-.post((req,res) => {
-	const {files,path} = req.body;	
-	if(checkPathExist(path)){
-		convertBase64ToImg(files,path);
+.post(async(req,res) => {
+	const {files,path,currentFolder} = req.body;
+	if(currentFolder){
+		try { 
+			let batch = await getPhotos(currentFolder)
+			res.json({currentPhotos:batch[0]});
+		}
+		catch(error){
+			console.log(error);
+		}
 	}else{
-		writeFolderAndModel(files,path)
+		if(checkPathExist(path)){
+			convertBase64ToImg(files,path);
+		}else{
+			writeFolderAndModel(files,path)
+		}
 	}
 })
 
@@ -32,13 +44,24 @@ const writeFolderAndModel = (files,path) => {
 			console.log(`The folder ${path} has been created`);
 		}
 	})
-	createModel(path).sync().then(()=> {
+	createModel(path).sync({force:false}).then(()=> {
 		console.log('Model has been created');
 		convertBase64ToImg(files,path)				
 	}).catch(err => {
 		console.log(err);
 	})
 }	
+
+const getPhotos = (folderName) => {
+	return sequelize.query(selectAllFrom(folderName+'s',(err,res)=>{
+		if(err){
+			console.error(err,'from errorrrr')
+		}else{
+			console.log(res);
+		}
+	}))
+}
+
 //handle model and savePathTo DB
 
 const convertBase64ToImg = (files,path) => {
