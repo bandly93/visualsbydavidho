@@ -11,3 +11,16 @@ export function leftCarousel(data) {
         data
     }
 }
+export function rightSlider(data) {
+    return {
+        type: "RIGHT_SLIDER",
+        data
+    }
+}
+
+export function leftSlider(data) {
+    return {
+        type: "LEFT_SLIDER",
+        data
+    }
+}
