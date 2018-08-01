@@ -4,19 +4,19 @@ import { sendData } from '../redux/fetchThunk.js';
 import { connect } from 'react-redux';
 import { updateView } from '../redux/viewModule.js';
 import { uploadFolder, uploadFiles } from '../redux/uploadModule.js';
-//import ImageCompressor from 'image-compressor.js';
+import '../css/Upload.css'
 
 class UploadBox extends Component{
-	onDrop = async (acceptedFiles) => {
-		let newFiles = await photoArray(acceptedFiles)
-		this.props.uploadFiles({files:newFiles})
+
+	onDrop = (acceptedFiles) => {
+		this.props.uploadFiles({files:photoArray(acceptedFiles)})
 	}
 
 	sendFiles = (e) => {
 		e.preventDefault();
 		const { files,folder } = this.props.upload;
 		const { uploadFiles,sendData } = this.props;
-		sendData('/postgres','POST',{files,path:folder},uploadFiles({files:null}))	
+		sendData('/postgres','POST',{files,path:folder},uploadFiles({folder:'',files:null}))	
 	}
 	
 	onFormChange = (e) => {
@@ -24,16 +24,18 @@ class UploadBox extends Component{
 	}
 
 	render(){
+		const { files } = this.props.upload
 		return<div className = 'upload'>
 			<div className = 'dropzone'>
 				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
 					<p> Drop your files in here! </p>
 				</Dropzone>	
-				<form onSubmit = {this.sendFiles} >
+				<form onSubmit = {this.sendFiles}>
 					<input 
 						type = 'text' 
 						name = 'folder'
-						placeholder = 'add folder' 
+						value = {this.props.upload.folder}
+						placeholder = 'add folder'  
 						onChange = {this.onFormChange}/>
 					<input type = 'submit'/>	
 				</form>
@@ -70,7 +72,7 @@ export default {
 	component:connect(mapStateToProps,mapDispatchToProps)(UploadBox)
 }
 
-/*
+
 const photoArrayForm = (photos) => {
 	let form = new FormData();	
 	photos.map( photo => form.append(photo.name,photo));
@@ -103,4 +105,3 @@ const constructPhotoArray = (photos) => {
 	return photoArray;
 }
 
-*/

@@ -23,7 +23,7 @@ export const uploadReducer = (state = initialState , action) => {
 }
 
 let initialState = {
-	folder : null,
+	folder : '',
 	files : null,
 }
 
