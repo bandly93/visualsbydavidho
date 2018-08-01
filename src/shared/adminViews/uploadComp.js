@@ -29,7 +29,7 @@ class UploadBox extends Component{
 	}
 
 	render(){
-		const { files } = this.props.upload
+		const { files,folder } = this.props.upload
 		return<div className = 'upload'>
 			<div className = 'dropzone'>
 				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
@@ -39,7 +39,7 @@ class UploadBox extends Component{
 					<input 
 						type = 'text' 
 						name = 'folder'
-						value = {this.props.upload.folder}
+						value = {folder}
 						placeholder = 'add folder'  
 						onChange = {this.onFormChange}/>
 					<input type = 'submit'/>	
@@ -77,14 +77,11 @@ export default {
 	component:connect(mapStateToProps,mapDispatchToProps)(UploadBox)
 }
 
-
 const photoArrayForm = (photos) => {
 	let form = new FormData();	
 	photos.map( photo => form.append(photo.name,photo));
 	return form;	
 }
-
-
 
 const constructPhotoArray = (photos) => {
 	let photoArray = [];

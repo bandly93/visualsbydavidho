@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 import NavBar from './components/NavBar';
-
+import { hot } from 'react-hot-loader';
 const App = ({ route }) => {
 	return(
 		<div>
@@ -14,5 +14,6 @@ const App = ({ route }) => {
 }
 
 export default {
-	component: App
+	component: hot(module)(App)
 }
+

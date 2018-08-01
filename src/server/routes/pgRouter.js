@@ -2,21 +2,24 @@ const express = require('express');
 const pgRouter = express.Router();
 import fs from 'fs';
 import { queryFunc } from '../postgres.js';
-import { selectAllFrom, selectColFrom, insertInto } from '../sqlQueries.js';
+import { selectAllFrom, selectColFrom, insertInto,selectRowFrom,addMaster,deleteMaster } from '../sqlQueries.js';
 import { sequelize,models,createModel } from '../database.js';
+
+let relPath = './src/shared/assets';
 
 pgRouter.route('/')
 .get((req,res) => {		
-	let folders = Object.keys(sequelize.models);	
+	let folders = fs.readdirSync(relPath).slice(1);
 	res.json({allFolders:folders});
 })
 
 .post(async(req,res) => {
-	const {files,path,currentFolder} = req.body;
+	const {files,path,currentFolder,currentPage,batchSize} = req.body;	
 	if(currentFolder){
 		try { 
-			let batch = await getPhotos(currentFolder)
-			res.json({currentPhotos:batch[0]});
+			let batch = await getPhotos(req)
+			let size = await sequelize.query(`SELECT "tableCount" FROM "Masters" WHERE "tableName" = '${currentFolder}'`)
+			res.json({currentPhotos:batch[0],tableCount:size[0][0].tableCount});
 		}
 		catch(error){
 			console.log(error);
@@ -25,12 +28,12 @@ pgRouter.route('/')
 		if(checkPathExist(path)){
 			convertBase64ToImg(files,path);
 		}else{
-			writeFolderAndModel(files,path)
+			writeFolderAndModel(files,path);
 		}
 	}
 })
 
-let relPath = './src/shared/assets';
+
 
 const checkPathExist = path => {
 	return fs.existsSync(relPath+'/'+path) && sequelize.models.hasOwnProperty(path);
@@ -44,18 +47,37 @@ const writeFolderAndModel = (files,path) => {
 			console.log(`The folder ${path} has been created`);
 		}
 	})
-	createModel(path).sync({force:false}).then(()=> {
+	createModel(path).sync({force:false})
+	.then(()=> {
+		sequelize.models['Master'].create({tableName:path,tableCount:0})
+		.then(() => {	
+		}).catch((err) => {
+			console.log(err);
+
+		})
 		console.log('Model has been created');
-		convertBase64ToImg(files,path)				
+		convertBase64ToImg(files,path);				
 	}).catch(err => {
 		console.log(err);
 	})
 }	
 
-const getPhotos = (folderName) => {
-	return sequelize.query(selectAllFrom(folderName+'s',(err,res)=>{
+const cleanseString = (string) => {
+	let length = string.length-1;
+	if(string[length] === 's'){
+		return string
+	}else{
+		return string+'s'
+	}
+}
+
+const getPhotos = (req) => {
+	const {currentPage,currentFolder,batchSize} = req.body
+	let folder = cleanseString(currentFolder);	
+	let offset = currentPage * batchSize - batchSize;
+	return sequelize.query(selectRowFrom(folder,batchSize,offset,(err,res)=>{
 		if(err){
-			console.error(err,'from errorrrr')
+			console.error(err,'from error')
 		}else{
 			console.log(res);
 		}
@@ -64,7 +86,7 @@ const getPhotos = (folderName) => {
 
 //handle model and savePathTo DB
 
-const convertBase64ToImg = (files,path) => {
+const convertBase64ToImg = async (files,path) => {
 	files.map(file => {
 		let data = file.data.replace(/^data:image\/\w+;base64,/,'');
 		let buf = new Buffer(data,'base64');
@@ -88,11 +110,21 @@ const savePathToDB = (model,name,path) => {
 	console.log('Attemping to save path to database');
 	sequelize.models[path].create({name,path})
 	.then(()=> {
-		console.log('Successfully saved '+name+' to database');
+		console.log('Path has been saved to the database')
+		sequelize.query(addMaster(1,path))
+		.catch(err => {
+			console.log(err);
+
+		})
 	})
 	.catch((err) => {
 		console.error('Error saving path to db function savePathToDB',err)
 	})
 }
+
+
+
+
+
 
 module.exports = pgRouter;

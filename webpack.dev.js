@@ -6,14 +6,12 @@ module.exports = merge(common,{
 	entry : {
 		client : ['./src/client/index.js'],
 	},
-	mode : 'development',
 	devtool : 'inline-source-map',
 	devServer : {
 		contentBase : 'dist',
 		publicPath : '/',
 		port : 8080,
 		overlay:true,
-		hot : true,	
 		inline:true,
 		proxy :{
 			'**':{
@@ -23,8 +21,5 @@ module.exports = merge(common,{
 			}
 		} 	
 	},
-	plugins : [
-		new webpack.HotModuleReplacementPlugin(),
-	]
 });
 

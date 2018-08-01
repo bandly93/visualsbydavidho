@@ -13,8 +13,25 @@ export const insertInto = (table,values) => {
 	return `INSERT INTO ${table} VALUES ${values.join(',')}`;
 }
 
+export const selectRowFrom = (table,limit,offset) => {
+	return `SELECT * FROM "${table}" LIMIT ${limit} OFFSET ${offset}`
+}
+
+export const deleteMaster = (count,table) => {
+	return `UPDATE "Masters" SET "tableCount" = "tableCount" - ${count} WHERE "tableName" = '${table}'`
+
+}
+export const addMaster = (count,table) => {
+	return `UPDATE "Masters" SET "tableCount" = "tableCount" + ${count} WHERE "tableName" = '${table}'`;
+}
+
+
+
 module.exports = {
 	selectColFrom,
 	selectAllFrom,
 	insertInto,
+	selectRowFrom,
+	deleteMaster,
+	addMaster,
 }

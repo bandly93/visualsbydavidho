@@ -1,6 +1,7 @@
 const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.common.js');
 const merge = require('webpack-merge');
+const webpack = require('webpack');
 
 //a webpack for server development
 module.exports = merge(common,{
@@ -8,5 +9,5 @@ module.exports = merge(common,{
 		server : ['./src/server/server.js'],
 	},	
 	target : 'node',
-	externals : [nodeExternals()],	
+	externals : [nodeExternals()],
 });

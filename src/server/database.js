@@ -16,7 +16,7 @@ export const sequelize = new Sequelize(
 export const syncModelsOnLoad = () => {
 	let path = './src/shared/assets';
 	let folders = fs.readdirSync(path).slice(1).map(folder => {
-		models[folder] = createModel(folder);
+		sequelize.models[folder] = createModel(folder);
 	})
 	sequelize.sync({force:false})
 	.then(res => {
@@ -27,6 +27,14 @@ export const syncModelsOnLoad = () => {
 	})
 }
 
+export const syncMasterTable = async() => {
+	let model = await sequelize.define('Master',{
+		tableName : Sequelize.STRING,
+		tableCount : Sequelize.INTEGER
+	})
+	model.sync({force:false})
+}
+
 export const createModel = (modelName) => {
 	return sequelize.define(modelName,{
 		name : Sequelize.STRING,
@@ -34,14 +42,11 @@ export const createModel = (modelName) => {
 	})
 } 
 
-export const models = {
-};
-
 module.exports = {
 	sequelize,
 	Sequelize,
-	models,
 	createModel,
 	syncModelsOnLoad,
+	syncMasterTable,
 }
 
