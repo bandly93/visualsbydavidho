@@ -42,27 +42,38 @@
     cursor: pointer;
     -webkit-animation: buttonflash 1.5s;
     opacity: 0;
+    
 }
 
 .leftButtonBox:hover {
     opacity: 1;
     -webkit-transition: opacity .25s ease-in-out .0s;
     transition: opacity .25s ease-in-out .0s;
+    
 }
 
 .carouselButtonRight {
-    width: 10vw;
+    text-align: center;
+    border-radius: 10px;
+    width: 4vw;
+    margin-right: 2em;
     margin-top: -10em;
     color: white;
     font-size: 40px;
+    background-color: black;
+    position: sticky;
 }
 
 .carouselButtonLeft {
-    text-align: right;
-    width: 10vw;
+    text-align: center;
+    border-radius: 10px;
+    width: 4vw;
+    margin-left: 2em;
     margin-top: -10em;
     color: white;
     font-size: 40px;
+    background-color: black;
+    position: sticky;
 }
 
 

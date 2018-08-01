@@ -5,13 +5,12 @@ import { rightSlider, leftSlider } from '../redux/actions/actions.js';
 
 class Slider extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
     nextSlide = () => {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const newIndex = imageSliderData +  1
-        console.log(newIndex)
 
         if (newIndex > this.props.imageUrl.length - 1) {
             let newIndex = 0;
@@ -24,7 +23,6 @@ class Slider extends Component {
     previousSlide = () => {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const newIndex = imageSliderData - 1
-        console.log(newIndex)
         
         if (newIndex < 0) {
             let newIndex = this.props.imageUrl.length - 1
@@ -38,7 +36,7 @@ class Slider extends Component {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const imageUrl = this.props.imageUrl
         const imageUrlMap = imageUrl.map((images, i) => {
-            
+
             return (
                 <div key={i} className="images">
                     <img src={imageUrl[i + imageSliderData]}></img>
@@ -56,18 +54,20 @@ class Slider extends Component {
         }
 
         return (
-            <div className="slider">
-                <div className="subSlider" style={styles}>
-                    {imageUrlMap}
+            <div>
+                <div className="slider">
+                    <div className="subSlider" style={styles}>
+                        {imageUrlMap}
+                    </div>
                 </div>
 
-                <div className="rightButtonBox">
-                    <div className="carouselButtonRight" onClick={this.nextSlide}>&#62;</div>
+                <div className="rightSliderButtonBox">
+                    <div className="sliderButtonRight" onClick={this.nextSlide}>&#62;</div>
                 </div>
 
-                <div className="leftButtonBox">
-                    <div className="carouselButtonLeft" onClick={this.previousSlide}>&#60;</div>
-                </div>
+                <div className="leftSliderButtonBox">
+                    <div className="sliderButtonLeft" onClick={this.previousSlide}>&#60;</div>
+                </div>        
             </div>
         )
     }
