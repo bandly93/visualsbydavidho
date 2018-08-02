@@ -1,0 +1,83 @@
+.carousel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
+}
+
+
+/* Bottom left text */
+.carouselText {
+    border-radius: 0 30px 0 30px;
+    letter-spacing: 0.5em;
+    padding: 12px 20px;
+    line-height: 1.2em;
+    font-size: 15px;
+    bottom: 0.1vh;
+    height: 1.5vh;
+    position: fixed;
+    background: white;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+/* Buttons on carousel page */
+.rightButtonBox {
+    float: right;
+    cursor: pointer;
+    -webkit-animation: buttonflash 1.5s;
+    opacity: 0;
+}
+
+.rightButtonBox:hover {
+    opacity: 1;
+    -webkit-transition: opacity .25s ease-in-out .0s;
+    transition: opacity .25s ease-in-out .0s;
+}
+
+.leftButtonBox {
+    float: left;
+    cursor: pointer;
+    -webkit-animation: buttonflash 1.5s;
+    opacity: 0;
+    
+}
+
+.leftButtonBox:hover {
+    opacity: 1;
+    -webkit-transition: opacity .25s ease-in-out .0s;
+    transition: opacity .25s ease-in-out .0s;
+    
+}
+
+.carouselButtonRight {
+    text-align: center;
+    border-radius: 10px;
+    width: 4vw;
+    margin-right: 2em;
+    margin-top: -10em;
+    color: white;
+    font-size: 40px;
+    background-color: black;
+    position: sticky;
+}
+
+.carouselButtonLeft {
+    text-align: center;
+    border-radius: 10px;
+    width: 4vw;
+    margin-left: 2em;
+    margin-top: -10em;
+    color: white;
+    font-size: 40px;
+    background-color: black;
+    position: sticky;
+}
+
+
+@keyframes buttonflash {
+    from {opacity: 1}
+    to {opacity: 0}
+}
