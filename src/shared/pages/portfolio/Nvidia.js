@@ -21,7 +21,7 @@ class Nvidia extends Component {
 const imgUrl = [
     NvidiaOne,
     NvidiaTwo,
-    NvidiaTwo,
+    "https://content.hwigroup.net/images/products_xl/251505/19/nvidia-geforce-gtx-980.jpg"
 ]
 
  export default {

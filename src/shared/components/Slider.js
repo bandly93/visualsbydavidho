@@ -36,10 +36,12 @@ class Slider extends Component {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const imageUrl = this.props.imageUrl
         const imageUrlMap = imageUrl.map((images, i) => {
-
+            
             return (
                 <div key={i} className="images">
-                    <img src={imageUrl[i + imageSliderData]}></img>
+                    <img 
+                    className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
+                        src={imageUrl[i + imageSliderData]}></img>
                 </div>
             )
         })        
