@@ -3,7 +3,8 @@ import App from '../App.js';
 import FrontPage from '../pages/FrontPage.js';
 import Upload from '../adminViews/UploadComp.js';
 import Resume from '../pages/aboutMe/Resume.js';
-import Nvidia from '../pages/portfolio/Nvidia.js';
+// import Nvidia from '../pages/portfolio/Nvidia.js';
+import Pages from '../pages/Pages.js';
 import Carousel from '../components/Carousel.js';
 
 export default [
@@ -26,8 +27,12 @@ export default [
                 exact: true
             },
             {
-                ...Nvidia,
+                ...Pages,
                 path: '/nvidia',
+            },
+            {
+                ...Pages,
+                path: '/fashion',
             },
         ]
     }

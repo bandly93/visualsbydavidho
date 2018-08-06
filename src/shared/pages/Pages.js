@@ -3,7 +3,7 @@ import styles from '../css/Slider.css';
 import { connect } from 'react-redux';
 import { rightSlider, leftSlider } from '../redux/actions/actions.js';
 
-class Slider extends Component {
+class Pages extends Component {
     constructor(props) {
         super(props);
     }
@@ -93,4 +93,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Slider);
+export default {
+    component: connect(mapStateToProps, mapDispatchToProps)(Slider)
+};
