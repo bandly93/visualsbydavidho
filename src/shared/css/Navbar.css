@@ -46,7 +46,8 @@ a {
 .navRight {
     width: 35%;
     margin-left: 64vw;
-    margin-top: 1vh;
+    /* margin-top: 0vh; */
+    position: fixed;
 }
 
 /* Dropdown stuff */

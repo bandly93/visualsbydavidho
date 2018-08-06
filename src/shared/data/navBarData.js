@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const handleFetch = (e) => {
+    const {name} = e.currentTarget;
+    // Fetch name from here
+}
+
 const portfolio = [
     {name: "Nvidia - Production", link: "/nvidia"}, 
     {name: "Test - Fashion", link: "/fashion"},
@@ -14,7 +19,7 @@ const portfolio = [
 
 const portfolioMap = portfolio.map((portfolios, i) => {
     return (
-        <Link to={portfolios.link} key={i}><span>{portfolios.name}</span></Link>
+        <Link to={portfolios.link} name={portfolios.link} key={i} onClick={handleFetch}> <span>{portfolios.name}</span> </Link>
     )
 })
 
@@ -67,3 +72,10 @@ export const navbarLabelMap = navbarLabel.map((navbarLabels, i) => {
         </div>
     )
 })
+
+const example = [
+    "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+]

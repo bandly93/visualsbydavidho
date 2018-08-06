@@ -35,13 +35,14 @@ class Slider extends Component {
     render() {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const imageUrl = this.props.imageUrl
+
         const imageUrlMap = imageUrl.map((images, i) => {
-            
             return (
                 <div key={i} className="images">
                     <img 
-                    className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
-                        src={imageUrl[i + imageSliderData]}></img>
+                    className={'active' + imageSliderData}
+                    src={imageUrl[i + imageSliderData]}
+                    ></img>
                 </div>
             )
         })        
@@ -51,9 +52,9 @@ class Slider extends Component {
 
         const widthStyle = (imageUrl.length * 100) + '%'
 
-        const styles = {
-            width: widthStyle,
-        }
+        // const styles = {
+        //     width: widthStyle,
+        // }
 
         return (
             <div>
@@ -93,4 +94,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Slider);
+export default connect(mapStateToProps, mapDispatchToProps)(Slider)

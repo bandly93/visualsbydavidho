@@ -29,6 +29,10 @@ export default [
                 ...Nvidia,
                 path: '/nvidia',
             },
+            {
+                ...Nvidia,
+                path: '/fashion',
+            },
         ]
     }
 ]
