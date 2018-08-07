@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { handleFetch } from '../redux/actions/actions.js';
+
+// DATA FOR LINKS UNDER PORTFOLIO --------------------------------------------------
 
 const portfolio = [
     {name: "Nvidia - Production", link: "/nvidia"}, 
@@ -14,9 +17,11 @@ const portfolio = [
 
 const portfolioMap = portfolio.map((portfolios, i) => {
     return (
-        <Link to={portfolios.link} key={i}><span>{portfolios.name}</span></Link>
+        <Link to={portfolios.link} name={portfolios.link} key={i} onClick={handleFetch}> <span>{portfolios.name}</span> </Link>
     )
 })
+
+// DATA FOR LINKS UNDER ABOUT -------------------------------------------------------
 
 const about = [
     {name: "Resume", link: "/resume", external: null},
@@ -37,6 +42,8 @@ const aboutMap = about.map((abouts, i) => {
     }
 })
 
+// DATA FOR LINKS UNDER INSTAGRAM --------------------------------------------------
+
 const instagram = [
     {name: "VisualsByDavidHo", external: "https://instagram.com/visualsbydavidho" },
     {name: "HangarX.co", external: "https://instagram.com/hangarx.co"},
@@ -48,6 +55,8 @@ const instagramMap = instagram.map((instagrams, i) => {
         <a href={instagrams.external} key={i}><span>{instagrams.name}</span></a>
     )
 })
+
+// TABS ON RIGHT SIDE OF NAVBAR ----------------------------------------------------
 
 const navbarLabel = [
     {name: "+ Portfolio", dropdown: portfolioMap},

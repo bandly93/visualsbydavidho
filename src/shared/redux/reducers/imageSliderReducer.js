@@ -1,5 +1,6 @@
 const initialState = {
-    currentSliderIndex: 0
+    currentSliderIndex: 0,
+    pageData: []
 }
 
 function imageSlider(state = initialState, action) {
@@ -13,6 +14,11 @@ function imageSlider(state = initialState, action) {
             return {
                 ...state,
                 currentSliderIndex: action.data
+            }
+        case "PAGE_DATA":
+            return {
+                ...state,
+                pageData: action.data
             }
         default: 
             return state
