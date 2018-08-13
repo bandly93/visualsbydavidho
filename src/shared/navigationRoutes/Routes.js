@@ -28,9 +28,14 @@ export default [
             },
             {
                 ...Pages,
-                path: '/:pages',
+                path: '/portfolio/:pages',
+                exact: true
             },
-
+            // {
+            //     ...Contact,
+            //     path: '/contact-me',
+            //     exact: true
+            // }
         ]
     }
 ]

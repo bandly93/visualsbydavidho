@@ -2,7 +2,8 @@ import React, { Component,Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styles from "../css/Navbar.css";
+import "../css/Navbar.css";
+
 const navbarData = require('../data/navbarData.js');
 
 class NavBar extends Component{
@@ -17,10 +18,13 @@ class NavBar extends Component{
 				<div className="navRight">
 					<ul>
 						{navbarLabelMap}
-						
 						<li><Link to="/contact-me">+ Contact Me</Link></li>
 					</ul>
 				</div>
+
+				<a href="" className="icon">
+					<i className="fa fa-bars"></i>
+				</a>				
 			</div>
 		)
 	}

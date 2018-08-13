@@ -12,7 +12,7 @@ class Pages extends Component {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const imageUrl = this.props.imageSliderData.pageData
         const newIndex = imageSliderData +  1
-        
+
         if (newIndex > imageUrl.length - 1) {
             let newIndex = 0;
             this.props.nextSlide(newIndex)
@@ -35,18 +35,18 @@ class Pages extends Component {
     }
     
     render() {
-        // const imageSliderData = this.props.imageSliderData.currentSliderIndex
-        // const imageUrl = this.props.imageSliderData.pageData
-        // const imageUrlMap = imageUrl.map((images, i) => {
+        const imageSliderData = this.props.imageSliderData.currentSliderIndex
+        const imageUrl = this.props.imageSliderData.pageData
+        const imageUrlMap = imageUrl.map((images, i) => {
             
-        //     return (
-        //         <div key={i} className="images">
-        //             <img 
-        //             className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
-        //                 src={imageUrl[i + imageSliderData]}></img>
-        //         </div>
-        //     )
-        // })        
+            return (
+                <div key={i} className="images">
+                    <img 
+                    className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
+                        src={imageUrl[i + imageSliderData]}></img>
+                </div>
+            )
+        })        
 
         // Multiplay number of images in array by 100% to set width.
         // e.g if array has 4 images, then 400% width
@@ -61,7 +61,7 @@ class Pages extends Component {
             <div>
                 <div className="slider">
                     <div className="subSlider" style={styles}>
-                        {/* {imageUrlMap} */}
+                        {imageUrlMap}
                     </div>
                 </div>
 

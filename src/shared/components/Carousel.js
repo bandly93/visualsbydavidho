@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { leftCarousel, rightCarousel } from '../redux/actions/actions.js';
-import styles from '../css/Carousel.css';
+import '../css/Carousel.css';
 
 // Notes at bottom
 

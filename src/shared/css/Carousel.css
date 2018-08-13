@@ -1,16 +1,18 @@
-.carousel {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    overflow: hidden;
+@media only screen and (max-width: 1035px) {
+    .carouselText {
+        width: 100%;
+        border-radius: none;
+    }
 }
 
+@media only screen and (min-width: 1036px) {
+    .carouselText {
+        border-radius: 0 30px 0 30px;
+    }
+}
 
-/* Bottom left text */
 .carouselText {
-    border-radius: 0 30px 0 30px;
+    background: white;
     letter-spacing: 0.5em;
     padding: 12px 20px;
     line-height: 1.2em;
@@ -18,9 +20,17 @@
     bottom: 0.1vh;
     height: 1.5vh;
     position: fixed;
-    background: white;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.carousel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
 }
 
 /* Buttons on carousel page */

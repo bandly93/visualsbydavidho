@@ -30,10 +30,11 @@ export function leftSlider(data) {
 export function handleFetch(e) {
     const { name } = e.currentTarget
     console.log(name);
-    
+
     return (dispatch) => {
             return (
             fetch('/api' + name, {
+                credentials: 'same-origin',
                 method: 'GET',
                 headers: {'Content-Type':'application/json'},
             })

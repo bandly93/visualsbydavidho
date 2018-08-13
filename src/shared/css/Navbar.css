@@ -4,6 +4,29 @@ body {
     padding: 0;
 }
 
+@media only screen and (max-width: 1035px) {
+    .navRight {display: none;}
+    .navLeft {
+        font-size: 1.6em;
+        letter-spacing: 0.18em;
+    }
+    .icon {display: visible}
+}
+
+@media only screen and (min-width: 1036px) {
+    .navLeft {
+        font-size: 5.4vh;
+        letter-spacing: 0.289474em;
+    }
+    .icon {display: none}
+}
+
+.icon {
+    float: right;
+    font-size: 1.5em;
+    margin-right: 0.5em;
+}
+
 .navbar {
     position: absolute;
     background-color: white;
@@ -36,9 +59,7 @@ a {
     float: left;
     text-decoration: none;
     margin-top: 0.5vh;
-    letter-spacing: 0.289474em;
     font-weight: 700;
-    font-size: 38px;
     margin-left: 2vw;
     position: fixed;
 }
@@ -46,7 +67,9 @@ a {
 .navRight {
     width: 35%;
     margin-left: 64vw;
-    margin-top: 1vh;
+    margin-top: 0.2vh;
+    position: fixed;
+    z-index: 1;
 }
 
 /* Dropdown stuff */

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Carousel from '../components/Carousel.js';
+import { withRouter } from 'react-router-dom';
 const carouselData = require('../data/carouselData.js');
 
 const { imgUrl, imgText } = carouselData
