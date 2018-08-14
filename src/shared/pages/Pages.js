@@ -28,17 +28,17 @@ class Pages extends Component {
         
         if (newIndex < 0) {
             let newIndex = imageUrl.length - 1
-            this.props.nextSlide(newIndex)
+            this.props.previousSlide(newIndex)
         } else {
-            this.props.nextSlide(newIndex)
+            this.props.previousSlide(newIndex)
         }
     }
     
     render() {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
         const imageUrl = this.props.imageSliderData.pageData
+
         const imageUrlMap = imageUrl.map((images, i) => {
-            
             return (
                 <div key={i} className="images">
                     <img 

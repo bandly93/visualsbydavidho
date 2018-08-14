@@ -10,7 +10,15 @@ body {
         font-size: 1.6em;
         letter-spacing: 0.18em;
     }
-    .icon {display: visible}
+    .icon {
+        display: visible;
+        text-align: right;
+}
+    .icon .iconLinks div {
+        display: block;
+        /* float: right; */
+    }
+    .icon .iconLinks .dropdown-child {display: none;}
 }
 
 @media only screen and (min-width: 1036px) {
@@ -27,12 +35,6 @@ body {
     margin-right: 0.5em;
 }
 
-.navbar {
-    position: absolute;
-    background-color: white;
-    width: 100%;
-    height: 6%;
-}
 
 ul {
     list-style-type: none;
@@ -55,20 +57,27 @@ a {
     padding: 5px 0;
 }
 
+.navbar {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    height: 6%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+}
+
 .navLeft {
-    float: left;
     text-decoration: none;
     margin-top: 0.5vh;
     font-weight: 700;
     margin-left: 2vw;
-    position: fixed;
+
 }
 
 .navRight {
-    width: 35%;
-    margin-left: 64vw;
+    width: 32em;
     margin-top: 0.2vh;
-    position: fixed;
     z-index: 1;
 }
 

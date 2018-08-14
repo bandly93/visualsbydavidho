@@ -3,12 +3,16 @@
         width: 100%;
         border-radius: none;
     }
+    .carouselButtonLeft {width: 1.5em;}
+    .carouselButtonRight {width: 1.5em;}
 }
 
 @media only screen and (min-width: 1036px) {
     .carouselText {
         border-radius: 0 30px 0 30px;
     }
+    .carouselButtonLeft {width: 1.5em;}
+    .carouselButtonRight {width: 1.5em;}
 }
 
 .carouselText {
@@ -65,11 +69,10 @@
 .carouselButtonRight {
     text-align: center;
     border-radius: 10px;
-    width: 4vw;
     margin-right: 2em;
     margin-top: -10em;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     background-color: black;
     position: sticky;
 }
@@ -77,11 +80,10 @@
 .carouselButtonLeft {
     text-align: center;
     border-radius: 10px;
-    width: 4vw;
     margin-left: 2em;
     margin-top: -10em;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     background-color: black;
     position: sticky;
 }

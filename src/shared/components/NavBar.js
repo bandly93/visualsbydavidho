@@ -23,7 +23,12 @@ class NavBar extends Component{
 				</div>
 
 				<a href="" className="icon">
-					<i className="fa fa-bars"></i>
+					<i className="fa fa-bars">
+						<div className="iconLinks">
+							{navbarLabelMap}
+							<li><Link to="/contact-me">+ Contact Me</Link></li>
+						</div>
+					</i>
 				</a>				
 			</div>
 		)
