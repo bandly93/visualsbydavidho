@@ -1,22 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { handleFetch } from '../redux/actions/actions.js';
+
+// DATA FOR LINKS UNDER PORTFOLIO --------------------------------------------------
 
 const portfolio = [
-    {name: "Nvidia - Production", link: "/nvidia"}, 
-    {name: "Test - Fashion", link: "/fashion"},
-    {name: "Lure + Till - Food", link: "/lure-till"},
-    {name: "Content Magazine - Event", link: "/content-magazine"},
-    {name: "ScreenPrintShowDown - Camera Operator", link: "/screenprintshowdown"},
-    {name: "Osmo - Photo and Grip", link: "/osmo"},
-    {name: "GoPanache - Photo", link: "/gopanache"},
-    {name: "Adobe Founders bts - Photo and Grip", link: "/adobe"}
+    {name: "Nvidia - Production", link: "/portfolio/nvidia"}, 
+    {name: "Test - Fashion", link: "/portfolio/fashion"},
+    {name: "Lure + Till - Food", link: "/portfolio/lure-till"},
+    {name: "Content Magazine - Event", link: "/portfolio/content-magazine"},
+    {name: "ScreenPrintShowDown - Camera Operator", link: "/portfolio/screenprintshowdown"},
+    {name: "Osmo - Photo and Grip", link: "/portfolio/osmo"},
+    {name: "GoPanache - Photo", link: "/portfolio/gopanache"},
+    {name: "Adobe Founders bts - Photo and Grip", link: "/portfolio/adobe"}
 ]
 
 const portfolioMap = portfolio.map((portfolios, i) => {
     return (
-        <Link to={portfolios.link} key={i}><span>{portfolios.name}</span></Link>
+        <Link to={portfolios.link} name={portfolios.link} key={i} onClick={handleFetch}> <span>{portfolios.name}</span> </Link>
     )
 })
+
+// DATA FOR LINKS UNDER ABOUT -------------------------------------------------------
 
 const about = [
     {name: "Resume", link: "/resume", external: null},
@@ -37,6 +42,8 @@ const aboutMap = about.map((abouts, i) => {
     }
 })
 
+// DATA FOR LINKS UNDER INSTAGRAM --------------------------------------------------
+
 const instagram = [
     {name: "VisualsByDavidHo", external: "https://instagram.com/visualsbydavidho" },
     {name: "HangarX.co", external: "https://instagram.com/hangarx.co"},
@@ -48,6 +55,8 @@ const instagramMap = instagram.map((instagrams, i) => {
         <a href={instagrams.external} key={i}><span>{instagrams.name}</span></a>
     )
 })
+
+// TABS ON RIGHT SIDE OF NAVBAR ----------------------------------------------------
 
 const navbarLabel = [
     {name: "+ Portfolio", dropdown: portfolioMap},

@@ -1,16 +1,22 @@
-.carousel {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    min-width: 100vw;
-    overflow: hidden;
+@media only screen and (max-width: 1035px) {
+    .carouselText {
+        width: 100%;
+        border-radius: none;
+    }
+    .carouselButtonLeft {width: 1.5em;}
+    .carouselButtonRight {width: 1.5em;}
 }
 
+@media only screen and (min-width: 1036px) {
+    .carouselText {
+        border-radius: 0 30px 0 30px;
+    }
+    .carouselButtonLeft {width: 1.5em;}
+    .carouselButtonRight {width: 1.5em;}
+}
 
-/* Bottom left text */
 .carouselText {
-    border-radius: 0 30px 0 30px;
+    background: white;
     letter-spacing: 0.5em;
     padding: 12px 20px;
     line-height: 1.2em;
@@ -18,9 +24,17 @@
     bottom: 0.1vh;
     height: 1.5vh;
     position: fixed;
-    background: white;
     display: inline-block;
     text-transform: uppercase;
+}
+
+.carousel {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    overflow: hidden;
 }
 
 /* Buttons on carousel page */
@@ -55,11 +69,10 @@
 .carouselButtonRight {
     text-align: center;
     border-radius: 10px;
-    width: 4vw;
     margin-right: 2em;
     margin-top: -10em;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     background-color: black;
     position: sticky;
 }
@@ -67,11 +80,10 @@
 .carouselButtonLeft {
     text-align: center;
     border-radius: 10px;
-    width: 4vw;
     margin-left: 2em;
     margin-top: -10em;
     color: white;
-    font-size: 40px;
+    font-size: 35px;
     background-color: black;
     position: sticky;
 }

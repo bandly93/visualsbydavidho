@@ -3,16 +3,17 @@ import styles from '../css/Slider.css';
 import { connect } from 'react-redux';
 import { rightSlider, leftSlider } from '../redux/actions/actions.js';
 
-class Slider extends Component {
+class Pages extends Component {
     constructor(props) {
         super(props);
     }
 
     nextSlide = () => {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
+        const imageUrl = this.props.imageSliderData.pageData
         const newIndex = imageSliderData +  1
 
-        if (newIndex > this.props.imageUrl.length - 1) {
+        if (newIndex > imageUrl.length - 1) {
             let newIndex = 0;
             this.props.nextSlide(newIndex)
         } else {
@@ -22,24 +23,27 @@ class Slider extends Component {
 
     previousSlide = () => {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
+        const imageUrl = this.props.imageSliderData.pageData
         const newIndex = imageSliderData - 1
         
         if (newIndex < 0) {
-            let newIndex = this.props.imageUrl.length - 1
-            this.props.nextSlide(newIndex)
+            let newIndex = imageUrl.length - 1
+            this.props.previousSlide(newIndex)
         } else {
-            this.props.nextSlide(newIndex)
+            this.props.previousSlide(newIndex)
         }
     }
     
     render() {
         const imageSliderData = this.props.imageSliderData.currentSliderIndex
-        const imageUrl = this.props.imageUrl
-        const imageUrlMap = imageUrl.map((images, i) => {
+        const imageUrl = this.props.imageSliderData.pageData
 
+        const imageUrlMap = imageUrl.map((images, i) => {
             return (
                 <div key={i} className="images">
-                    <img src={imageUrl[i + imageSliderData]}></img>
+                    <img 
+                    className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
+                        src={imageUrl[i + imageSliderData]}></img>
                 </div>
             )
         })        
@@ -47,11 +51,11 @@ class Slider extends Component {
         // Multiplay number of images in array by 100% to set width.
         // e.g if array has 4 images, then 400% width
 
-        const widthStyle = (imageUrl.length * 100) + '%'
+        // const widthStyle = (imageUrl.length * 100) + '%'
 
-        const styles = {
-            width: widthStyle,
-        }
+        // const styles = {
+        //     width: widthStyle,
+        // }
 
         return (
             <div>
@@ -91,4 +95,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Slider);
+export default {
+    component: connect(mapStateToProps, mapDispatchToProps)(Pages)
+};

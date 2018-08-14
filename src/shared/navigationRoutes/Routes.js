@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import App from '../App.js';
 import FrontPage from '../pages/FrontPage.js';
 import Upload from '../adminViews/UploadComp.js';
 import Resume from '../pages/aboutMe/Resume.js';
-import Nvidia from '../pages/portfolio/Nvidia.js';
+import Pages from '../pages/Pages.js';
 import Carousel from '../components/Carousel.js';
 import Gallery from '../adminViews/GalleryComp.js';
 
@@ -27,14 +28,20 @@ export default [
                 exact: true
             },
             {
-                ...Nvidia,
-                path: '/nvidia',
+                ...Pages,
+                path: '/portfolio/:pages',
+                exact: true
             },
+            // {
+            //     ...Contact,
+            //     path: '/contact-me',
+            //     exact: true
+            // }
 						{
 								...Gallery,
 								path: '/gallery',
 								exact: true,
-						}
+            }
         ]
     }
 ]

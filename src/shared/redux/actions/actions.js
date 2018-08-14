@@ -24,3 +24,33 @@ export function leftSlider(data) {
         data
     }
 }
+
+// WHEN CLICKING ON LINKS UNDER PORTFOLIO TAB, IT WILL CALL THIS FUNCTION
+
+export function handleFetch(e) {
+    const { name } = e.currentTarget
+    console.log(name);
+
+    return (dispatch) => {
+            return (
+            fetch('/api' + name, {
+                credentials: 'same-origin',
+                method: 'GET',
+                headers: {'Content-Type':'application/json'},
+            })
+            .then(res => res.json())
+            .then(responseData => {
+                if(responseData.status !== 400) {
+                    dispatch(PageData(responseData))
+                }
+            })
+        )
+    }
+}
+
+export function PageData(responseData) {
+    return {
+        type: 'PAGE_DATA',
+        data: responseData
+    }
+}

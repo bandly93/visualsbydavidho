@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { renderRoutes } from 'react-router-config';
 import NavBar from './components/NavBar';
-import { hot } from 'react-hot-loader';
+import { withRouter } from 'react-router-dom';
 const App = ({ route }) => {
 	return(
 		<div className="app">
@@ -14,6 +14,6 @@ const App = ({ route }) => {
 }
 
 export default {
-	component: hot(module)(App)
+	component: withRouter(App)
 }
 
