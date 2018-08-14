@@ -1,22 +1,57 @@
 import React,{Component,Fragment} from 'react';
 import Dropzone from 'react-dropzone';
-import { sendData } from '../redux/fetchThunk.js';
+import { sendData,sendFile } from '../redux/fetchThunk.js';
 import { connect } from 'react-redux';
 import { updateView } from '../redux/viewModule.js';
-import { uploadFolder, uploadFiles } from '../redux/uploadModule.js';
-import '../css/Upload.css'
+import { uploadFolder, uploadFiles,toggleIsCompressing } from '../redux/uploadModule.js';
+import '../css/Upload.css';
+import ImageCompressor from 'image-compressor.js';
 
 class UploadBox extends Component{
 
 	onDrop = (acceptedFiles) => {
-		this.props.uploadFiles({files:photoArray(acceptedFiles)})
+		const { uploadFiles,toggleIsCompressing} = this.props;
+		uploadFiles(acceptedFiles)
 	}
-
+	
 	sendFiles = (e) => {
 		e.preventDefault();
 		const { files,folder } = this.props.upload;
-		const { uploadFiles,sendData } = this.props;
-		sendData('/postgres','POST',{files,path:folder},uploadFiles({folder:'',files:null}))	
+		const { uploadFiles,sendData,uploadFolder } = this.props;
+		if(folder !== '' && files){
+			this.constructPhotoArray(files);
+		}else{
+			//create redux action to show error
+			console.log('please fill out the form');
+		}
+	}
+
+	constructPhotoArray =  (photos) => {
+		const { sendFile} = this.props;
+		const { folder } = this.props.upload;
+		let formData = new FormData();	
+		photos.map(photo => {	
+			let string = `${folder}---${photo.name}`;	
+			formData.append('image',photo,string);
+			
+			/*
+			let transformedPhoto = new ImageCompressor(photo,{
+				quality:.5,
+				maxWidth:3600,
+				maxHeight:2250,
+				minWidth:1600,
+				minHeight:900,
+				success(result){
+					let string = `${folder}.${result.name}`;	
+					formData.append('image',result,string);
+				},
+				error(e){
+					console.log(e.message);
+				}
+			})
+			*/
+		})	
+		sendFile('/postgres','POST',formData);
 	}
 	
 	onFormChange = (e) => {
@@ -24,7 +59,7 @@ class UploadBox extends Component{
 	}
 
 	render(){
-		const { files } = this.props.upload
+		const { files,folder,isCompressing } = this.props.upload;
 		return<div className = 'upload'>
 			<div className = 'dropzone'>
 				<Dropzone onDrop = {(acceptedFiles) => this.onDrop(acceptedFiles)}>
@@ -34,26 +69,15 @@ class UploadBox extends Component{
 					<input 
 						type = 'text' 
 						name = 'folder'
-						value = {this.props.upload.folder}
+						value = {folder}
 						placeholder = 'add folder'  
 						onChange = {this.onFormChange}/>
-					<input type = 'submit'/>	
+					<input type = 'submit'/>
 				</form>
+				{files.length > 0 ? <p> {files.length} photos to be uploaded! </p> : null}
 			</div>
 		</div>
 	}
-}
-
-const photoArray = (photos) => {
-	let arr = [];
-	for (let i = 0; i < photos.length; i++){
-		let reader = new FileReader();
-		reader.onload = function(event){
-			arr.push({name:photos[i].name,data:event.target.result});
-		}
-		reader.readAsDataURL(photos[i]);
-	}
-	return arr;
 }
 
 const mapStateToProps = (state) => ({
@@ -62,46 +86,14 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
+	sendFile,
 	sendData,
 	updateView,
 	uploadFolder,
 	uploadFiles,
+	toggleIsCompressing,
 }
 
 export default {
 	component:connect(mapStateToProps,mapDispatchToProps)(UploadBox)
 }
-
-
-const photoArrayForm = (photos) => {
-	let form = new FormData();	
-	photos.map( photo => form.append(photo.name,photo));
-	return form;	
-}
-
-
-
-const constructPhotoArray = (photos) => {
-	let photoArray = [];
-	for (let i = 0; i < photos.length; i++){
-		let reader = new FileReader();
-		let transformedPhoto = new ImageCompressor(photos[i],{
-			quality:.5,
-			maxWidth:3600,
-			maxHeight:2250,
-			minWidth:1600,
-			minHeight:900,
-			success(result){
-				reader.onload = function(event){
-					photoArray.push({name:photos[i].name,data:event.target.result});
-				}
-				reader.readAsDataURL(result);
-			},
-			error(e){
-				console.log(e.message);
-			}
-		})
-	}
-	return photoArray;
-}
-

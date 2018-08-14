@@ -4,10 +4,12 @@ import view from './viewModule.js';
 import upload from './uploadModule.js';
 import imageCarousel from './reducers/imageCarouselReducer.js';
 import imageSlider from './reducers/imageSliderReducer.js';
+import gallery from './galleryModule.js';
 
 const reducers = combineReducers({
   view,
   upload,
+	gallery,
   imageSlider,
   imageCarousel,
 });

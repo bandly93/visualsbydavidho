@@ -32,12 +32,12 @@ export const renderFullPage = (html, preloadedState) =>  {
 				<meta name = 'viewport' content = 'width=device-width'>
 				<meta name = 'description' content = 'photography-david-ho'>
 				<link rel="icon" href="data:;base64,iVBORwOKGO=">
-				<link rel="stylesheet "href="/styles.css" >
+				<link rel="stylesheet "href="/client-styles.css" >
 				<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
 			</head>
 			<body>
 				<div id="root">${html}</div>
-				<script src = '/client-bundle.js'> </script>
+				<script src = '/bundle.js'> </script>
 				<script> window.__PRELOADED_STORE__ = ${serialize(preloadedState)} </script>
 			</body>
 		</html>

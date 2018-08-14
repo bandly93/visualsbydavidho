@@ -5,6 +5,7 @@ import Upload from '../adminViews/UploadComp.js';
 import Resume from '../pages/aboutMe/Resume.js';
 import Nvidia from '../pages/portfolio/Nvidia.js';
 import Carousel from '../components/Carousel.js';
+import Gallery from '../adminViews/GalleryComp.js';
 
 export default [
     {
@@ -17,7 +18,7 @@ export default [
             },
             {
                 ...Upload,
-                path: '/admin',
+                path: '/upload',
                 exact: true
             },
             {
@@ -29,6 +30,11 @@ export default [
                 ...Nvidia,
                 path: '/nvidia',
             },
+						{
+								...Gallery,
+								path: '/gallery',
+								exact: true,
+						}
         ]
     }
 ]

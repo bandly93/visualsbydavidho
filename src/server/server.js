@@ -3,19 +3,19 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import { handleRender } from './render.js'
 import expressStaticGzip from 'express-static-gzip';
-import fs from 'fs';
-import { sequelize, models,syncModelsOnLoad } from './database.js';
+import { syncModelsOnLoad,syncMasterTable } from './database.js';
 
 const app = express();
 const port = 3000;
 
 //sync models to database
 syncModelsOnLoad();
+syncMasterTable();
 
 app.use(bodyParser.urlencoded({
-	extended:true,
+	extended:false,
 	limit:'50mb',
-	parameterLimit:500000,
+	parameterLimit:5000000,
 }));
 
 app.use(bodyParser.json({limit:'50mb'}));
