@@ -1,4 +1,4 @@
-import {selectAllFrom, selectColFrom, insertInto} from '../src/server/sqlQueries.js';
+import {selectAllFrom, selectColFrom, insertInto,selectRowFrom, addMaster , deleteMaster} from '../src/server/sqlQueries.js';
 
 test('query should return a statement with table name',() => {
 	expect(selectAllFrom("testing")).toBe('SELECT * FROM testing')
@@ -18,5 +18,15 @@ test('return insert string query',() => {
 
 test('return a sql injection query',() => {
 	expect(selectAllFrom('testing WHERE id = 0')).toBe('SELECT * FROM testing WHERE id = 0')
+})
 
+
+test('return a sql query', () => {
+	expect(selectRowFrom('Example',10,5)).toBe('SELECT * FROM Example LIMIT 10 OFFSET 5')
+})
+
+
+test ('testing addMaster', () => {
+
+	expect(addMaster(5,'Example')).toBe('UPDATE "MASTER" SET "tableCount" + 5 WHERE "tableName" = Example')
 })

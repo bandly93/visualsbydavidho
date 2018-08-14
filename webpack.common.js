@@ -4,8 +4,9 @@ const webpack = require('webpack');
 
 //A common webpack file that all other webpack share.
 module.exports = {
+	mode :'development',
 	output : {
-		filename: '[name]-bundle.js',
+		filename: 'bundle.js',
 		path: path.resolve(__dirname,'dist'),
 		publicPath: '/',
 	},
@@ -17,6 +18,11 @@ module.exports = {
 				use: [
 					{ 
 						loader: 'babel-loader',
+						options:{ 
+							babelrc : false,
+							presets : ['react','env','stage-3'],
+							plugins : ['transform-class-properties']
+						}
 					},
 				],	
 			},
@@ -28,12 +34,12 @@ module.exports = {
 					] 
 			},
 			{
-				test: /\.(jpg|png|gif|svg)$/,
+				test: /\.(jpg|png|gif|svg|jpeg|JPG)$/,
 				use: [
 					{
 						loader: 'file-loader',
 						options: {
-							name: 'images/[name].[ext]',		
+							name: 'assets/[name].[ext]',		
 						},
 					},
 				],
@@ -42,12 +48,12 @@ module.exports = {
 	},
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: "styles.css",
-			// filename: devMode ? '[name].css' : '[name].[hash].css',
-			// chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+			filename: "[name]-styles.css",
+			chunkFilename : "[id].css",
 		}),
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin()
+		new webpack.DefinePlugin({
+			'process.env.BROWSER': JSON.stringify(true),
+		}),
 	],
 	stats: {
 		entrypoints: true,

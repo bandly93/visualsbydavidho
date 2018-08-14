@@ -6,6 +6,7 @@ import Upload from '../adminViews/UploadComp.js';
 import Resume from '../pages/aboutMe/Resume.js';
 import Pages from '../pages/Pages.js';
 import Carousel from '../components/Carousel.js';
+import Gallery from '../adminViews/GalleryComp.js';
 
 export default [
     {
@@ -18,7 +19,7 @@ export default [
             },
             {
                 ...Upload,
-                path: '/admin',
+                path: '/upload',
                 exact: true
             },
             {
@@ -36,6 +37,11 @@ export default [
             //     path: '/contact-me',
             //     exact: true
             // }
+						{
+								...Gallery,
+								path: '/gallery',
+								exact: true,
+            }
         ]
     }
 ]

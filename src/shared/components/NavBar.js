@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import "../css/Navbar.css";
 
 const navbarData = require('../data/navbarData.js');
+import {navLeft,navRight} from "../css/Navbar.css";
 
 class NavBar extends Component{
 	render() {
@@ -14,8 +15,7 @@ class NavBar extends Component{
 				<h1 className="navLeft">
 					<b><Link to="/">VISUALS BY DAVID HO</Link></b>
 				</h1>
-
-				<div className="navRight">
+				<div className='navRight'>
 					<ul>
 						{navbarLabelMap}
 						<li><Link to="/contact-me">+ Contact Me</Link></li>
