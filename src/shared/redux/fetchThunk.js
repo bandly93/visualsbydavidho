@@ -13,10 +13,26 @@ export const sendData = (url,method,data,actFunc) => {
 		.then(data =>{ 
 			if(actFunc){
 				actFunc(data)
-				//console.log(data)
 			}
 		})
 		.catch(err => console.error(err));
+	}
+}
+
+export const sendFile = (url,method,data,actFunc) => {
+	return(dispatch) => {
+		fetch(url,{
+			method,
+			body:data,
+			headers: {'Accept' : 'application/json'},	
+		})
+		.then(res => res.json())
+		.then(data => {
+			if(actFunc){
+				dispatch(actFunc(data))
+			}
+		})
+		.catch(err => console.log(err))
 	}
 }
 

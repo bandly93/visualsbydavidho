@@ -25,6 +25,14 @@ export const addMaster = (count,table) => {
 	return `UPDATE "Masters" SET "tableCount" = "tableCount" + ${count} WHERE "tableName" = '${table}'`;
 }
 
+export const selectFromMaster = (table) => {
+	return `SELECT "tableCount" FROM "Masters" WHERE "tableName" = '${table}'`
+}
+
+export const deleteFromTable = (table,photoName) => {
+	return `DELETE FROM "${table}" WHERE "name" = '${photoName}'`;
+}
+
 
 
 module.exports = {
@@ -34,4 +42,6 @@ module.exports = {
 	selectRowFrom,
 	deleteMaster,
 	addMaster,
+	selectFromMaster,
+	deleteFromTable,
 }

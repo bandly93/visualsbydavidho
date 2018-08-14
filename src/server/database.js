@@ -1,14 +1,14 @@
 import { Sequelize } from 'sequelize';
 import { DB_NAME,DB_USERNAME,DB_PASSWORD } from '../../config.json';
 import fs from 'fs';
-let isProd = true;
+let isProd = false;
 
 export const sequelize = new Sequelize(
 	DB_NAME,DB_USERNAME,DB_PASSWORD,{
 		host : 'localhost',
-		post : 5432,
+		port : 5432,
 		dialect : 'postgres',
-		operatorAliases : Sequelize.Op,
+		operatorsAliases : Sequelize.Op,
 		logging : false,
 	}
 );
@@ -30,7 +30,7 @@ export const syncModelsOnLoad = () => {
 export const syncMasterTable = async() => {
 	let model = await sequelize.define('Master',{
 		tableName : Sequelize.STRING,
-		tableCount : Sequelize.INTEGER
+		tableCount : Sequelize.INTEGER,
 	})
 	model.sync({force:false})
 }

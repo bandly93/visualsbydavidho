@@ -13,7 +13,7 @@ syncModelsOnLoad();
 syncMasterTable();
 
 app.use(bodyParser.urlencoded({
-	extended:true,
+	extended:false,
 	limit:'50mb',
 	parameterLimit:5000000,
 }));

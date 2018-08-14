@@ -51,6 +51,9 @@ module.exports = {
 			filename: "[name]-styles.css",
 			chunkFilename : "[id].css",
 		}),
+		new webpack.DefinePlugin({
+			'process.env.BROWSER': JSON.stringify(true),
+		}),
 	],
 	stats: {
 		entrypoints: true,

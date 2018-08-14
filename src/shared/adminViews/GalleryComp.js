@@ -1,14 +1,13 @@
 import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { sendData,getData } from '../redux/fetchThunk.js';
-import { updateFolder,getAllFolders,updatePhotoBatch,updatePage } from '../redux/galleryModule.js';
+import { updateFolder,getAllFolders,updatePhotoBatch,updatePage,addPhotoToDelete } from '../redux/galleryModule.js';
 import styles from '../css/Gallery.css';
 
-class Gallery extends Component{
-	
+class Gallery extends Component{	
 	componentDidMount(){
-		const { getData,getAllFolders } = this.props;	
-		getData('/postgres',getAllFolders);	
+		const { getData,getAllFolders,sendData } = this.props;	
+		getData('/postgres',getAllFolders);
 	}
 
 	handleFolderFetch = (e) => {
@@ -42,15 +41,22 @@ class Gallery extends Component{
 	}
 	
 	handlePageFetch = ({value,type}) => {
-		const { sendData,updatePhotoBatch } = this.props;
+		const { sendData,updatePhotoBatch,updatePage } = this.props;
 		const { currentPage,batchSize,currentFolder } = this.props.gallery;
 		
+		if(value){
+			updatePage({currentPage:value});
+		}
+		
 		let dataPacket = {
-			currentFolder:type?type:currentFolder,
-			currentPage:value?value:currentPage,
+			currentFolder : type ? type : currentFolder,
+			currentPage : value ? value : currentPage, 
 			batchSize,
 		}
-		sendData('/postgres','POST',dataPacket,updatePhotoBatch);
+
+		if(value !== currentPage){		
+			sendData('/postgres','POST',dataPacket,updatePhotoBatch);
+		}
 	}
 	
 	pagination = () => {
@@ -73,12 +79,22 @@ class Gallery extends Component{
 			</ul>
 		}
 	}
-
+	
+	handleDelete = () => {
+		const { currentFolder,filesToDelete } = this.props.gallery;
+		const { sendData,updatePhotoBatch } = this.props;
+		let data = {filesToDelete,currentFolder}
+		sendData('/postgres','DELETE',data,updatePhotoBatch);
+	}
+	
 	photos = () => {
 		const { currentPhotos,currentFolder } = this.props.gallery;
+		const { addPhotoToDelete } = this.props;
 		if(currentPhotos){	
 			return currentPhotos.map(photo => <img
 				key = {photo.id}
+				alt = {photo.name}
+				onClick = {(e) => addPhotoToDelete(e.currentTarget.alt)}
 				src = {require('../assets/' + currentFolder + '/' + photo.name)}	
 			/>)
 		}else{
@@ -92,6 +108,7 @@ class Gallery extends Component{
 			<div className = 'folder'>{this.folders()}</div>
 			<div className = 'photos'>{this.photos()}</div>
 			<div className = 'pagination'>{this.pagination()}</div>
+			<button onClick = {this.handleDelete}> DELETE </button>
 		</div>
 	}
 }
@@ -108,6 +125,7 @@ const mapDispatchToProps = {
 	getAllFolders,
 	updatePhotoBatch,
 	updatePage,
+	addPhotoToDelete,
 }
 
 export default{
