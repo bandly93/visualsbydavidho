@@ -2,7 +2,9 @@
     .carouselText {
         width: 100%;
         border-radius: none;
+        z-index: 1
     }
+
     .carouselButtonLeft {width: 1.5em;}
     .carouselButtonRight {width: 1.5em;}
 }

@@ -45,7 +45,7 @@ class Carousel extends Component {
                     style={backgroundStyle}>
                 </div>
                 
-                <div className="carouselText">
+                <div className={this.props.imageCarouselData.hamburgerActive ? 'inactive' : 'carouselText' }>
                     {this.props.text[this.props.imageCarouselData.currentImageIndex]}
                 </div>
 

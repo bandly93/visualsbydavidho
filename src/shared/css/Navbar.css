@@ -12,10 +12,11 @@ body {
     }
 
     .icon {
-        text-align: right;
+        text-align: center;
         font-size: 20px;
         margin-right: 0.5em;
         margin-top: 6px;
+
     }
     
     .icon:hover {
@@ -38,7 +39,6 @@ body {
     }
 
     .icon .active .dropdown-child {
-        display: visible;
         font-size: 17px;
         font-family: PT sans;
         line-height: 1.1em;
@@ -51,6 +51,8 @@ body {
     i .active {
         /* border: 2px solid red; */
         background-color: white;
+        margin-left: -2vw;
+        width: 100vw;
     }
 }
 
