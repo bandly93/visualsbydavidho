@@ -1,5 +1,5 @@
-import Nvidia_one from '../assets/nvidia_one.jpg';
-import Car_one from '../assets/cars_one.jpg';
+const Nvidia_one = '../assets/nvidia_one.jpg';
+const Car_one = '../assets/cars_one.jpg';
 
 // let Nvidia_one = 'http://via.placeholder.com/350x150';
 // let Car_one = 'http://via.placeholder.com/350x150';
