@@ -1,5 +1,6 @@
 const initialState = {
-    currentImageIndex: 0
+    currentImageIndex: 0,
+    hamburgerActive: false,
 }
 
 function imageCarousel(state = initialState, action) {
@@ -13,6 +14,11 @@ function imageCarousel(state = initialState, action) {
             return {
                 ...state,
                 currentImageIndex: action.data
+            }
+        case "HAMBURGER_ACTIVE":
+            return {
+                ...state,
+                hamburgerActive: action.data
             }
         default: 
             return state
