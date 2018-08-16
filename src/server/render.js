@@ -32,7 +32,7 @@ export const renderFullPage = (html, preloadedState) =>  {
 				<meta name = 'viewport' content = 'width=device-width'>
 				<meta name = 'description' content = 'photography-david-ho'>
 				<link rel="icon" href="data:;base64,iVBORwOKGO=">
-				<link rel="stylesheet" href="/styles.css" >
+				<link rel="stylesheet" href="/client-styles.css" >
 				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 				<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
 			</head>

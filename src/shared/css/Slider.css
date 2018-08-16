@@ -50,6 +50,7 @@ img {
     margin-left: 50%;
     margin-top: 2%;
     position: fixed;
+    z-index: -1;
 }
 
 .leftSliderButtonBox {
@@ -58,6 +59,7 @@ img {
     margin-left: 46%;
     margin-top: 2%;
     position: fixed;
+    z-index: -1;
 }
 
 .sliderButtonRight {

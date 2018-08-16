@@ -1,20 +1,30 @@
 import React, { Component,Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router,Route,Link,Switch,withRouter } from 'react-router-dom';
+import { hamburgerActive } from '../redux/actions/actions.js';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import "../css/Navbar.css";
-
 const navbarData = require('../data/navbarData.js');
-import {navLeft,navRight} from "../css/Navbar.css";
 
 class NavBar extends Component{
+
+	toggleClass = () => {
+		const hamburger = this.props.hamburgerActive.hamburgerActive;
+		const newHamburger = !hamburger
+		console.log(newHamburger)
+		
+		this.props.toggle(newHamburger)
+	}
+
 	render() {
 		const { navbarLabelMap } = navbarData;
 		return (
 			<div className="navbar">
+
 				<h1 className="navLeft">
-					<b><Link to="/">VISUALS BY DAVID HO</Link></b>
+					<b><Link to="/" className={this.props.hamburgerActive.hamburgerActive ? 'inactive' : 'active'}>VISUALS BY DAVID HO</Link></b>
 				</h1>
+
 				<div className='navRight'>
 					<ul>
 						{navbarLabelMap}
@@ -22,16 +32,34 @@ class NavBar extends Component{
 					</ul>
 				</div>
 
-				<a href="" className="icon">
+				<div className="icon" onClick={this.toggleClass}>
 					<i className="fa fa-bars">
-						<div className="iconLinks">
+						<div className={this.props.hamburgerActive.hamburgerActive ? 'active' : 'inactive'}>
 							{navbarLabelMap}
-							<li><Link to="/contact-me">+ Contact Me</Link></li>
+							<div className="dropdown">
+								<li className="dropbtn">
+									<Link to="/contact-me">+ Contact Me</Link>
+								</li>
+							</div>
 						</div>
 					</i>
-				</a>				
+				</div>
 			</div>
 		)
 	}
 }
-export default NavBar
+
+function mapStateToProps(state) {
+	return {
+		hamburgerActive : state.imageCarousel
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		toggle: (data) => {
+			dispatch(hamburgerActive(data))
+		}
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

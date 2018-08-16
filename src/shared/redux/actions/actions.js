@@ -54,3 +54,12 @@ export function PageData(responseData) {
         data: responseData
     }
 }
+
+// TOGGLE HAMBURGER MENU
+
+export function hamburgerActive(data) {
+    return {
+        type: 'HAMBURGER_ACTIVE',
+        data
+    }
+}

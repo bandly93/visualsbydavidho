@@ -9,8 +9,8 @@ const app = express();
 const port = 3000;
 
 //sync models to database
-syncModelsOnLoad();
-syncMasterTable();
+//syncModelsOnLoad();
+//syncMasterTable();
 
 app.use(bodyParser.urlencoded({
 	extended:false,
