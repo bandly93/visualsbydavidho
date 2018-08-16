@@ -35,25 +35,27 @@ class Carousel extends Component {
     }
 
     render() {
+        const hamburger = this.props.imageCarouselData.hamburgerActive;
+
         const backgroundStyle = {
             backgroundImage: `url(${this.props.backgroundImage[this.props.imageCarouselData.currentImageIndex]})`,
         }
         return(
-            <div>
+            <div className="carouselContainer">
                 <div 
                     className="carousel" 
                     style={backgroundStyle}>
                 </div>
                 
-                <div className={this.props.imageCarouselData.hamburgerActive ? 'inactive' : 'carouselText' }>
+                <div className={hamburger ? 'inactive' : 'carouselText' }>
                     {this.props.text[this.props.imageCarouselData.currentImageIndex]}
                 </div>
 
-                    <div className="rightButtonBox">
+                    <div className={hamburger ? 'inactive' : 'rightButtonBox'}>
                         <div className="carouselButtonRight" onClick={this.nextSlide}>&#62;</div>
                     </div>
 
-                    <div className="leftButtonBox">
+                    <div className={hamburger ? 'inactive' : 'leftButtonBox'}>
                         <div className="carouselButtonLeft" onClick={this.previousSlide}>&#60;</div>
                     </div>
             </div>

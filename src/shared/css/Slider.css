@@ -1,11 +1,51 @@
-@media only screen and (max-width: 1035px) {
+@media only screen and (max-width: 1053px) {
     .subSlider {
         margin: auto;
         vertical-align: middle;
     }
+
+    .rightSliderButtonBox {display:none;}
+    .leftSliderButtonBox {display:none;}
 }
 
-@media only screen and (min-width: 1036px) {
+@media only screen and (min-width: 1054px) {
+
+        /* Buttons */
+    .rightSliderButtonBox {
+        float: right;
+        cursor: pointer;
+        margin-left: 50%;
+        margin-top: 2%;
+        position: fixed;
+        z-index: -1;
+    }
+
+    .leftSliderButtonBox {
+        float: left;
+        cursor: pointer;
+        margin-left: 46%;
+        margin-top: 2%;
+        position: fixed;
+        z-index: -1;
+    }
+
+    .sliderButtonRight {
+        text-align: center;
+        border-radius: 10px;
+        width: 4vw;
+        color: white;
+        font-size: 20px;
+        background-color: black;
+    }
+
+    .sliderButtonLeft {
+        text-align: center;
+        border-radius: 10px;
+        width: 4vw;
+        color: white;
+        font-size: 20px;
+        background-color: black;
+    }
     
 }
 
@@ -41,41 +81,4 @@ img {
 @keyframes fadeIn {
     from {opacity: 0}
     to {opacity: 1}
-}
-
-/* Buttons */
-.rightSliderButtonBox {
-    float: right;
-    cursor: pointer;
-    margin-left: 50%;
-    margin-top: 2%;
-    position: fixed;
-    z-index: -1;
-}
-
-.leftSliderButtonBox {
-    float: left;
-    cursor: pointer;
-    margin-left: 46%;
-    margin-top: 2%;
-    position: fixed;
-    z-index: -1;
-}
-
-.sliderButtonRight {
-    text-align: center;
-    border-radius: 10px;
-    width: 4vw;
-    color: white;
-    font-size: 20px;
-    background-color: black;
-}
-
-.sliderButtonLeft {
-    text-align: center;
-    border-radius: 10px;
-    width: 4vw;
-    color: white;
-    font-size: 20px;
-    background-color: black;
 }

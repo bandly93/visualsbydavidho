@@ -26,10 +26,8 @@ class NavBar extends Component{
 				</h1>
 
 				<div className='navRight'>
-					<ul>
-						{navbarLabelMap}
-						<li><Link to="/contact-me">+ Contact Me</Link></li>
-					</ul>
+					{navbarLabelMap}
+					<li><Link to="/contact-me">+ Contact Me</Link></li>
 				</div>
 
 				<div className="icon" onClick={this.toggleClass}>

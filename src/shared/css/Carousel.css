@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1035px) {
+@media only screen and (max-width: 1053px) {
     .carouselText {
         width: 100%;
         border-radius: none;
@@ -9,7 +9,7 @@
     .carouselButtonRight {width: 1.5em;}
 }
 
-@media only screen and (min-width: 1036px) {
+@media only screen and (min-width: 1054px) {
     .carouselText {
         border-radius: 0 30px 0 30px;
     }
@@ -23,7 +23,7 @@
     padding: 12px 20px;
     line-height: 1.2em;
     font-size: 15px;
-    bottom: 0.1vh;
+    bottom: 0.05vh;
     height: 1.5vh;
     position: fixed;
     display: inline-block;
@@ -36,15 +36,20 @@
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* Buttons on carousel page */
+
 .rightButtonBox {
     float: right;
     cursor: pointer;
     -webkit-animation: buttonflash 1.5s;
-    opacity: 0;
+    opacity: 0.5;
+    position: fixed;
+    right: 0;
+    margin-top: -40vh;
+    margin-right: 8em;
 }
 
 .rightButtonBox:hover {
@@ -53,45 +58,40 @@
     transition: opacity .25s ease-in-out .0s;
 }
 
+.carouselButtonRight {
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    font-size: 35px;
+    background-color: black;
+}
+
 .leftButtonBox {
     float: left;
     cursor: pointer;
     -webkit-animation: buttonflash 1.5s;
-    opacity: 0;
-    
+    opacity: 0.5;
+    position: fixed;
+    margin-top: -40vh;
+    margin-left: 8em;
 }
 
 .leftButtonBox:hover {
     opacity: 1;
     -webkit-transition: opacity .25s ease-in-out .0s;
     transition: opacity .25s ease-in-out .0s;
-    
-}
-
-.carouselButtonRight {
-    text-align: center;
-    border-radius: 10px;
-    margin-right: 2em;
-    margin-top: -10em;
-    color: white;
-    font-size: 35px;
-    background-color: black;
-    position: sticky;
 }
 
 .carouselButtonLeft {
     text-align: center;
-    border-radius: 10px;
-    margin-left: 2em;
-    margin-top: -10em;
+    border-radius: 10px;    
     color: white;
     font-size: 35px;
     background-color: black;
-    position: sticky;
 }
 
 
 @keyframes buttonflash {
     from {opacity: 1}
-    to {opacity: 0}
+    to {opacity: 0.5}
 }
