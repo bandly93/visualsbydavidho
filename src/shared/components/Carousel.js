@@ -47,15 +47,15 @@ class Carousel extends Component {
                     style={backgroundStyle}>
                 </div>
                 
-                <div className={hamburger ? 'inactive' : 'carouselText' }>
+                <div className='carouselText'>
                     {this.props.text[this.props.imageCarouselData.currentImageIndex]}
                 </div>
 
-                    <div className={hamburger ? 'inactive' : 'rightButtonBox'}>
+                    <div className='rightButtonBox'>
                         <div className="carouselButtonRight" onClick={this.nextSlide}>&#62;</div>
                     </div>
 
-                    <div className={hamburger ? 'inactive' : 'leftButtonBox'}>
+                    <div className='leftButtonBox'>
                         <div className="carouselButtonLeft" onClick={this.previousSlide}>&#60;</div>
                     </div>
             </div>

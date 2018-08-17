@@ -30,6 +30,7 @@ body {
         width: 97.9vw;
         height: 96vh;
         z-index: 100;
+        position: relative;
     }
 
     .active div {
@@ -83,7 +84,6 @@ body {
         left: 50%;
         right: auto;
         /* margin-left: -100px; */
-        z-index: 1100px;
         transform: translateX(-50%);
     }
     

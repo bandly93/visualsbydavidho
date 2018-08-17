@@ -41,9 +41,7 @@ class Pages extends Component {
         const imageUrlMap = imageUrl.map((images, i) => {
             return (
                 <div key={i} className="images">
-                    <img 
-                    className={ i == imageSliderData ? 'active' : 'inactive' + [i]}
-                        src={imageUrl[i + imageSliderData]}></img>
+                    <img src={imageUrl[i + imageSliderData]}></img>
                 </div>
             )
         })        
