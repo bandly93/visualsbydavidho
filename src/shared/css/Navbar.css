@@ -28,7 +28,7 @@ body {
         font-family: PT sans;
         display: visible;
         width: 97.9vw;
-        height: 96vh;
+        height: 100vh;
         z-index: 100;
         position: relative;
     }
@@ -150,6 +150,8 @@ body {
         margin-left: -10px;
     }
 }
+
+.noNavbar {display: none;}
 
 li {
     margin-top: 2vh;

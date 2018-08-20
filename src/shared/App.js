@@ -17,4 +17,3 @@ const App = ({ route }) => {
 export default {
 	component: withRouter(App)
 }
-

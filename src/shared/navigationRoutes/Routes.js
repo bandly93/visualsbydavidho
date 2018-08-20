@@ -7,6 +7,7 @@ import Resume from '../pages/aboutMe/Resume.js';
 import Pages from '../pages/Pages.js';
 import Carousel from '../components/Carousel.js';
 import Gallery from '../adminViews/GalleryComp.js';
+import Contact from '../pages/Contact.js';
 
 export default [
     {
@@ -32,15 +33,15 @@ export default [
                 path: '/portfolio/:pages',
                 exact: true
             },
-            // {
-            //     ...Contact,
-            //     path: '/contact-me',
-            //     exact: true
-            // }
-						{
-								...Gallery,
-								path: '/gallery',
-								exact: true,
+            {
+                ...Contact,
+                path: '/contact-me',
+                exact: true
+            },
+            {
+                ...Gallery,
+                path: '/gallery',
+                exact: true,
             }
         ]
     }

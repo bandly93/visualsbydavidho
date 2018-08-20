@@ -9,7 +9,7 @@ const navbarData = require('../data/navbarData.js');
 class NavBar extends Component{
 
 	toggleClass = () => {
-		const hamburger = this.props.hamburgerActive.hamburgerActive;
+		const hamburger = this.props.navBar.hamburgerActive;
 		const newHamburger = !hamburger
 		console.log(newHamburger)
 		
@@ -19,10 +19,10 @@ class NavBar extends Component{
 	render() {
 		const { navbarLabelMap } = navbarData;
 		return (
-			<div className="navbar">
+			<div className={this.props.navBar.adminPage ? "noNavbar" : "navbar"}>
 
 				<h1 className="navLeft">
-					<b><Link to="/" className={this.props.hamburgerActive.hamburgerActive ? 'inactive' : 'active'}>VISUALS BY DAVID HO</Link></b>
+					<b><Link to="/" className={this.props.navBar.hamburgerActive ? 'inactive' : 'active'}>VISUALS BY DAVID HO</Link></b>
 				</h1>
 
 				<div className='navRight'>
@@ -32,7 +32,7 @@ class NavBar extends Component{
 
 				<div className="icon" onClick={this.toggleClass}>
 					<i className="fa fa-bars">
-						<div className={this.props.hamburgerActive.hamburgerActive ? 'active' : 'inactive'}>
+						<div className={this.props.navBar.hamburgerActive ? 'active' : 'inactive'}>
 							{navbarLabelMap}
 							<div className="dropdown">
 								<li className="dropbtn">
@@ -49,7 +49,7 @@ class NavBar extends Component{
 
 function mapStateToProps(state) {
 	return {
-		hamburgerActive : state.imageCarousel
+		navBar : state.imageCarousel
 	}
 }
 

@@ -1,3 +1,7 @@
+@media only screen and (min-width: 1053px) {
+    .resume {padding-top: 12vh;}
+}
+
 .resume .content {
     text-align: center;
 }
@@ -5,8 +9,9 @@
 .resume {
     width: 60%;
     margin: auto;
-    margin-top: auto;
-    padding-top: 12vh;
+    right: 0;
+    left: 0;
+    bottom: 0;
 }
 
 .resume p {

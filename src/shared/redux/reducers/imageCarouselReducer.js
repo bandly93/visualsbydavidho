@@ -1,6 +1,7 @@
 const initialState = {
     currentImageIndex: 0,
     hamburgerActive: false,
+    adminPage: false,
 }
 
 function imageCarousel(state = initialState, action) {
