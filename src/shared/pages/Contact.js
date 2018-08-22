@@ -12,7 +12,7 @@ class Contact extends Component {
                     <form className="contactForm">
 
                         <div className="contactName">
-                            <label className="contactLabel">
+                            <label className="contactLabelName">
                                 <input 
                                     type="text"
                                     name="firstname"
@@ -21,7 +21,7 @@ class Contact extends Component {
                                     First Name *
                             </label>
 
-                            <label className="contactLabel">
+                            <label className="contactLabelName">
                                 <input 
                                     type="text"
                                     name="lastname"
@@ -36,7 +36,6 @@ class Contact extends Component {
                                     type="text"
                                     name="email"
                                     value={null}
-                                    placeholder="Email"
                                     required />
                                     Email *
                             </label>
@@ -50,18 +49,15 @@ class Contact extends Component {
                                     Subject *
                             </label>
 
-                            <label>
+                            <label className="contactLabel">
                                 <textarea 
                                     name="message"
                                     value={null}
-                                    placeholde="Please leave a message"
                                     required />
                                     Message *
                             </label>
 
-                            <input
-                                type="submit"
-                                value="Submit" />
+                            <input type="submit" value="Submit" />
                     </form>
 
 
@@ -70,14 +66,16 @@ class Contact extends Component {
     }
 }
 
-function mapStateToProps(state) {
+// function mapStateToProps(state) {
 
-}
+// }
 
-function mapDispatchToProps(dispatch) {
+// function mapDispatchToProps(dispatch) {
 
-}
+// }
 
 export default {
-    component: connect(mapStateToProps, mapDispatchToProps)(Contact)
+    component: 
+    // connect(mapStateToProps, mapDispatchToProps)
+    (Contact)
 }

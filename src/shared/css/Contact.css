@@ -14,11 +14,15 @@
 .contactContainer {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 70%;
     padding-top: 9vh;
     padding-left: 2vw;
     margin: 0 auto;
     border: 2px solid red
+}
+
+.contactContainer h1 {
+    margin-top: 7.8vh;
 }
 
 .contactName {
@@ -26,18 +30,48 @@
     justify-content: space-between;
 }
 
+.contactName input {
+    width: 20vw;
+}
+
 .contactForm {
     display: flex;
     flex-direction: column;
     margin-left: 5vw;
     margin-top: 6vh;
+    width: 45%;
+    font-size: 11px;
 }
 
-input {
-    /* display: inline-block;
-    width: 6em;
-    position: relative;
-    top: -3em; */
+.contactForm input:not([type~='submit']) {
+    height: 4vh;
+    border-radius: 2px;
+    border: 1px solid #ccc
+}
+
+.contactLabel input{
+    width: 44.8vw;
+}
+
+.contactLabel textarea {
+    width: 44.8vw;
+    height: 20vh;
+    border-radius: 2px;
+    border: 1px solid #ccc
+}
+
+.contactForm [type~='submit'] {
+    width: 12vw;
+    height: 5vh;
+    margin-top: 2vh;
+    font-size: 12px;
+    color: white;
+    background-color: black;
+}
+
+.contactForm [type~='submit']:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 label {

@@ -75,6 +75,7 @@ body {
         position: relative;
         display: inline-block;
         width: auto;
+        z-index: 100;
     }
     
     .dropdown-content {
@@ -151,7 +152,6 @@ body {
     }
 }
 
-.noNavbar {display: none;}
 
 li {
     margin-top: 2vh;

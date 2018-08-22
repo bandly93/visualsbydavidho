@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import configureStore from '../shared/redux/store';
 import Routes from '../shared/navigationRoutes/Routes.js';
+// import App from '../shared/App.js';
 
 const preloadedState = window.__PRELOADED_STATE__;
 

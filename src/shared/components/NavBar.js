@@ -11,7 +11,6 @@ class NavBar extends Component{
 	toggleClass = () => {
 		const hamburger = this.props.navBar.hamburgerActive;
 		const newHamburger = !hamburger
-		console.log(newHamburger)
 		
 		this.props.toggle(newHamburger)
 	}
@@ -19,7 +18,7 @@ class NavBar extends Component{
 	render() {
 		const { navbarLabelMap } = navbarData;
 		return (
-			<div className={this.props.navBar.adminPage ? "noNavbar" : "navbar"}>
+			<div className="navbar">
 
 				<h1 className="navLeft">
 					<b><Link to="/" className={this.props.navBar.hamburgerActive ? 'inactive' : 'active'}>VISUALS BY DAVID HO</Link></b>

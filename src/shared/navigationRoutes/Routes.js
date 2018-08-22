@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import App from '../App.js';
 import FrontPage from '../pages/FrontPage.js';
 import Upload from '../adminViews/UploadComp.js';
