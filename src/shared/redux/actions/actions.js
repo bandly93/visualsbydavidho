@@ -25,6 +25,32 @@ export function leftSlider(data) {
     }
 }
 
+//  CONTACT FORM ACTION
+
+export function contactForm(name, value) {
+    return {
+        type: "CONTACT_FORM",
+        name,
+        value
+    }
+}
+
+export function contactFormSubmit(data) {
+    return (dispatch) => {
+        console.log(data)
+        return fetch('/email', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .catch(err => {
+            console.log(err)
+        })
+    }
+}
+
 // WHEN CLICKING ON LINKS UNDER PORTFOLIO TAB, IT WILL CALL THIS FUNCTION
 
 export function handleFetch(e) {

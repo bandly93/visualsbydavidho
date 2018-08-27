@@ -5,10 +5,12 @@ import upload from './uploadModule.js';
 import imageCarousel from './reducers/imageCarouselReducer.js';
 import imageSlider from './reducers/imageSliderReducer.js';
 import gallery from './galleryModule.js';
+import contact from './reducers/contactReducer.js';
 
 const reducers = combineReducers({
   view,
   upload,
+  contact,
 	gallery,
   imageSlider,
   imageCarousel,

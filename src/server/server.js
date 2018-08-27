@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import { handleRender } from './render.js'
 import expressStaticGzip from 'express-static-gzip';
 import { syncModelsOnLoad,syncMasterTable } from './database.js';
+import emailRouter from './routes/emailRouter.js';
 
 const app = express();
 const port = 3000;
@@ -26,6 +27,7 @@ app.use(expressStaticGzip('dist',{enableBrotli:true}));
 
 const pgRouter = require('./routes/pgRouter.js');
 
+app.use('/email', emailRouter)
 app.use('/postgres',pgRouter);
 
 app.use(handleRender);

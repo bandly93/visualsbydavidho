@@ -2,44 +2,96 @@
     label {
         display: inline-block;
         width: 6em;
-        margin-right: .5em;
         padding-top: 1.5em;
+    }
+    
+    .contactContainer {
+        flex-direction: column;
+        margin-left: 8vw;
+        width: 95%;
+    }
+
+    .contactContainer h1 {
+        font-size: 23px;
+    }
+
+    .contactLabelName {
+        width: 100%;
+    }
+
+    .contactLabelName input {
+        width: 94%;
+    }
+
+    .contactForm {
+        width: 90%;
+    }
+
+    .contactLabel input {
+        width: 83vw;
+    }
+
+    .contactLabel textarea {
+        /* width: 76.5vw; */
+        width: 83vw;
     }
 }
 
 @media only screen and (min-width: 1054px) {
+    .contactContainer {
+        flex-direction: row;
+        padding-top: 9vh;
+        padding-left: 2vw;
+        margin: 0 auto;
+        width: 70%;
+    }
 
+    .contactForm {
+        margin-top: 6vh;
+        margin-left: 5vw;
+    }
+
+    .contactName {
+        justify-content: space-between;
+    }
+
+    .contactName input {
+        width: 20vw;
+    }
+
+    .contactLabel input {
+        width: 44.8vw;
+    }
+
+    .contactLabel textarea {
+        width: 44.8vw;
+    }
+
+    label {
+        margin-right: .5em;
+    }
 }
 
 .contactContainer {
     display: flex;
-    flex-direction: row;
-    width: 70%;
-    padding-top: 9vh;
-    padding-left: 2vw;
-    margin: 0 auto;
-    border: 2px solid red
 }
 
 .contactContainer h1 {
-    margin-top: 7.8vh;
+    margin-top: 9vh;
+    letter-spacing: 2px;
 }
 
 .contactName {
     display: flex;
-    justify-content: space-between;
 }
 
 .contactName input {
-    width: 20vw;
+    display: block;
 }
 
 .contactForm {
     display: flex;
     flex-direction: column;
-    margin-left: 5vw;
-    margin-top: 6vh;
-    width: 45%;
     font-size: 11px;
 }
 
@@ -50,14 +102,15 @@
 }
 
 .contactLabel input{
-    width: 44.8vw;
+    display: block;
 }
 
 .contactLabel textarea {
-    width: 44.8vw;
     height: 20vh;
     border-radius: 2px;
-    border: 1px solid #ccc
+    border: 1px solid #ccc;
+    display: block;
+    position: fixed;
 }
 
 .contactForm [type~='submit'] {
@@ -75,8 +128,7 @@
 }
 
 label {
-    display: inline-block;
-    width: 6em;
-    margin-right: .5em;
+    display: block;
+    /* width: 6em; */
     padding-top: 1.5em;
 }

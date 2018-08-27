@@ -1,81 +1,129 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { contactForm, contactFormSubmit } from '../redux/actions/actions.js';
 import '../css/Contact.css';
 
 class Contact extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            validForm: false,
+        }
+    }
+
+    onChange = (e) => {
+        this.props.input(e.target.name, e.target.value)
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const data = this.props.contact;
+        const emailCheck = /@/g
+
+        //Validation
+        //Validate names
+        if(data.firstname.match(/^[a-zA-Z]+$/) && data.lastname.match(/^[a-zA-Z]+$/)) {
+
+            //Validate email
+            if(emailCheck.test(data.email) == true) {
+                this.props.submit(data)
+            } else {
+                alert('Please make sure your email is correct')
+            }
+            
+        } else {
+            alert("Please make sure you've spelled your name correctly")
+        }
+    }
+
+    // handleValidation = () => {
+
+    // }
+
     render() {
         return (
                 <div className="contactContainer">
 
                     <h1>Contact Me</h1>
 
-                    <form className="contactForm">
+                    <form onSubmit={this.handleSubmit} className="contactForm">
 
                         <div className="contactName">
                             <label className="contactLabelName">
+                                First Name *
                                 <input 
                                     type="text"
                                     name="firstname"
-                                    value={null}
+                                    onChange={this.onChange}
+                                    value={this.props.contact.firstname}
                                     required />
-                                    First Name *
                             </label>
 
                             <label className="contactLabelName">
+                                Last Name *
                                 <input 
                                     type="text"
                                     name="lastname"
-                                    value={null}
+                                    onChange={this.onChange}
+                                    value={this.props.contact.lastname}
                                     required />
-                                    Last Name *
                             </label>
                         </div>
 
                             <label className="contactLabel">
+                                Email *
                                 <input 
                                     type="text"
                                     name="email"
-                                    value={null}
+                                    onChange={this.onChange}
+                                    value={this.props.contact.email}
                                     required />
-                                    Email *
                             </label>
 
                             <label className="contactLabel">
+                                Subject *
                                 <input 
                                     type="text"
                                     name="subject"
-                                    value={null}
+                                    onChange={this.onChange}
+                                    value={this.props.contact.subject}
                                     required />
-                                    Subject *
                             </label>
 
                             <label className="contactLabel">
+                                Message *
                                 <textarea 
                                     name="message"
-                                    value={null}
+                                    onChange={this.onChange}
+                                    value={this.props.contact.message}
                                     required />
-                                    Message *
                             </label>
 
                             <input type="submit" value="Submit" />
                     </form>
-
 
                 </div>
         )
     }
 }
 
-// function mapStateToProps(state) {
+function mapStateToProps(state) {
+    return {
+        contact : state.contact
+    }
+}
 
-// }
-
-// function mapDispatchToProps(dispatch) {
-
-// }
+function mapDispatchToProps(dispatch) {
+    return {
+        input: (name, value) => {
+            dispatch(contactForm(name, value))
+        },
+        submit: (data) => {
+            dispatch(contactFormSubmit(data))
+        }
+    }
+}
 
 export default {
-    component: 
-    // connect(mapStateToProps, mapDispatchToProps)
-    (Contact)
+    component: connect(mapStateToProps, mapDispatchToProps)(Contact)
 }
