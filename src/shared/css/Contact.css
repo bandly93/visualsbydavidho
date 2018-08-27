@@ -32,8 +32,18 @@
     }
 
     .contactLabel textarea {
-        /* width: 76.5vw; */
         width: 83vw;
+    }
+
+    .contactForm [type~='submit'] {
+        margin-top: 3vh;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: black;
+        width: 30%;
+        height: 4.5vh;
+        color: white;
+        border-radius: 10px 10px;
     }
 }
 
@@ -60,15 +70,26 @@
     }
 
     .contactLabel input {
-        width: 44.8vw;
+        width: 45.2vw;
     }
 
     .contactLabel textarea {
-        width: 44.8vw;
+        width: 45vw;
     }
 
-    label {
-        margin-right: .5em;
+    .contactForm [type~='submit'] {
+        width: 12vw;
+        height: 5vh;
+        margin-top: 2vh;
+        font-size: 12px;
+        color: white;
+        background-color: black;
+        position: sticky;
+    }
+    
+    .contactForm [type~='submit']:hover {
+        opacity: 0.5;
+        cursor: pointer;
     }
 }
 
@@ -110,25 +131,10 @@
     border-radius: 2px;
     border: 1px solid #ccc;
     display: block;
-    position: fixed;
-}
-
-.contactForm [type~='submit'] {
-    width: 12vw;
-    height: 5vh;
-    margin-top: 2vh;
-    font-size: 12px;
-    color: white;
-    background-color: black;
-}
-
-.contactForm [type~='submit']:hover {
-    opacity: 0.5;
-    cursor: pointer;
+    position: sticky;
 }
 
 label {
     display: block;
-    /* width: 6em; */
     padding-top: 1.5em;
 }
